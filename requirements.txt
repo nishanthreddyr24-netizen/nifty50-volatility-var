@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+statsmodels
+yfinance
+arch
+hmmlearn
+jupyter
+nbconvert
+pytest

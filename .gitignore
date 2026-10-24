@@ -1,0 +1,8 @@
+.venv/
+.pipcache/
+.tmp/
+__pycache__/
+*.pyc
+data/raw/*.csv
+.ipynb_checkpoints/
+*.egg-info/
