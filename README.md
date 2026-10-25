@@ -39,16 +39,15 @@ All computational pieces are done and runnable. Scope for the actual
 write-up/presentation (deliberately kept tighter than everything that's been
 built — see note below):
 
-**Core story:** stylized facts → GBM baseline → HMM regime model → GARCH
-family → VaR backtest comparison → extreme-event (Poisson/Hawkes) analysis.
+**Core story:** stylized facts → GBM baseline → HMM regime model →
+GARCH(1,1) (plain, normal innovations — the syllabus version) → VaR backtest
+comparison → extreme-event (Poisson/Hawkes) analysis.
 
-**Supplementary / appendix only, not part of the main narrative:**
+**Supplementary / appendix only, not part of the main narrative, and not
+presented:** GJR-GARCH and Student-t innovations (beyond what the course
+covers — kept in the code for the curious, but not part of the write-up),
 historical simulation VaR benchmark, HMM parameter-recovery simulation
-study. Both are fully built and correct (see results below) and worth a
-one-line mention or an appendix slide, but doubling down on explaining every
-model in presentation depth was more breadth than a 20-mark group project
-needs or than is comfortable to defend in a viva — so the write-up should
-stay to the core spine above.
+study.
 
 ### Headline results (NIFTY 50, out-of-sample 1-day 99% VaR, 2008–2026)
 
@@ -56,18 +55,15 @@ stay to the core spine above.
 |--------------------------|:---:|:---:|:---:|:---:|
 | GBM (expanding window)   | 0.44% | 0.00 (fails, too conservative) | 0.69 | 10/89 |
 | GARCH(1,1), normal       | 1.58% | 0.00 (fails, too aggressive) | 0.98 | 6/89 |
-| GJR-GARCH, normal        | 1.29% | 0.07 (borderline) | 0.24 | 5/89 |
 | **HMM 2-state**          | **0.92%** | **0.62 (passes)** | 0.40 | **4/89** |
-| **GJR-GARCH, Student-t** | **0.92%** | **0.62 (passes)** | 0.40 | **4/89** |
-| Historical simulation    | 1.05% | 0.77 (passes) | **0.00 (fails, clustered)** | 11/89 |
 
-Expected rate under correct calibration is 1.00%. Both the HMM and GJR-GARCH
-with Student-t innovations pass both tests cleanly and handle the COVID
-stress window best; GBM is too conservative (expanding-window vol lags the
-current regime); plain GARCH is too aggressive; historical simulation passes
-Kupiec but fails Christoffersen (its stale empirical quantile makes
-violations cluster during fast-moving crises — a known textbook weakness).
-Reproduce this table with `python -m src.model_comparison`.
+Expected rate under correct calibration is 1.00%. GBM is too conservative
+(its expanding-window volatility estimate lags the current regime); plain
+GARCH(1,1) is too aggressive; the HMM is the only one of the three that
+passes both the Kupiec and Christoffersen tests, and it also handles the
+COVID stress window best. Reproduce this table with `python -m
+src.model_comparison` (the full output also includes the GJR-GARCH/Student-t/
+historical-simulation rows kept for reference — just not part of the story).
 
 Other findings: fat tails (excess kurtosis ≈ 16, Jarque-Bera rejects
 normality), strong volatility clustering (ACF of squared returns, Ljung-Box
@@ -86,6 +82,11 @@ here. Also, the 2008 GFC itself can't be backtested out-of-sample (it falls
 inside every model's first training window, since the sample starts exactly
 2008-01-01 with no earlier data to train on) — this is a genuine data
 limitation, not an oversight.
+
+Also note on `src/garch.py` and `src/model_comparison.py`: these still
+*compute* GJR-GARCH and Student-t variants (useful as a sanity check that
+plain GARCH(1,1) isn't an outlier result), but the write-up should only
+present the plain GARCH(1,1) normal row from the table above.
 
 Not yet done: report write-up itself (`reports/`); everything the course
 project needs computationally is in place.
