@@ -35,9 +35,20 @@ newer Python versions.)
 
 ## Status
 
-Core analysis is done: data loading, stylized facts, GBM baseline, HMM
-regime model, GARCH family, historical simulation benchmark, extreme-event
-analysis, model comparison, and a parameter-recovery simulation study.
+All computational pieces are done and runnable. Scope for the actual
+write-up/presentation (deliberately kept tighter than everything that's been
+built — see note below):
+
+**Core story:** stylized facts → GBM baseline → HMM regime model → GARCH
+family → VaR backtest comparison → extreme-event (Poisson/Hawkes) analysis.
+
+**Supplementary / appendix only, not part of the main narrative:**
+historical simulation VaR benchmark, HMM parameter-recovery simulation
+study. Both are fully built and correct (see results below) and worth a
+one-line mention or an appendix slide, but doubling down on explaining every
+model in presentation depth was more breadth than a 20-mark group project
+needs or than is comfortable to defend in a viva — so the write-up should
+stay to the core spine above.
 
 ### Headline results (NIFTY 50, out-of-sample 1-day 99% VaR, 2008–2026)
 
