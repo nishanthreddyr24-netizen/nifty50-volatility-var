@@ -183,6 +183,45 @@ def christoffersen_test(result: BacktestResult) -> dict:
     }
 
 
+def historical_sim_var_backtest(
+    returns: pd.Series, window: int = 250, alpha: float = 0.99, step: int = 1
+) -> BacktestResult:
+    """Historical simulation VaR: a non-parametric benchmark. VaR_t is minus the
+    empirical (1-alpha) quantile of the trailing `window` returns strictly
+    before t (no distributional assumption at all, unlike GBM/HMM/GARCH's
+    parametric normal or Student-t VaR). ES_t is the mean of the returns
+    beyond that quantile.
+
+    This doesn't fit the `forecast_fn(history) -> (mu, sigma)` plug-in shape
+    used by `rolling_var_backtest` (there's no mu/sigma, just a trailing
+    empirical quantile), so it builds a BacktestResult directly; the result
+    is still fully compatible with kupiec_test / christoffersen_test /
+    basel_traffic_light below.
+    """
+    dates, actual, var_list, es_list = [], [], [], []
+    n = len(returns)
+    for i in range(window, n, step):
+        history = returns.iloc[i - window : i]  # strictly before returns.index[i]
+        t = returns.index[i]
+        r_t = returns.iloc[i]
+
+        q = np.quantile(history, 1 - alpha)
+        var_t = -q
+        tail = history[history <= q]
+        es_t = -tail.mean() if len(tail) else var_t
+
+        dates.append(t)
+        actual.append(r_t)
+        var_list.append(var_t)
+        es_list.append(es_t)
+
+    table = pd.DataFrame(
+        {"return": actual, "var": var_list, "es": es_list}, index=pd.Index(dates, name="date")
+    )
+    table["hit"] = (-table["return"] > table["var"]).astype(int)
+    return BacktestResult(table=table, alpha=alpha)
+
+
 def basel_traffic_light(result: BacktestResult, window: int = 250) -> pd.DataFrame:
     """Basel traffic-light classification of violations within each trailing
     `window`-day block (non-overlapping), at the 99% level convention:
