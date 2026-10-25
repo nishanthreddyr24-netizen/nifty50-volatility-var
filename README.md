@@ -44,10 +44,10 @@ GARCH(1,1) (plain, normal innovations — the syllabus version) → VaR backtest
 comparison → extreme-event (Poisson/Hawkes) analysis.
 
 **Supplementary / appendix only, not part of the main narrative, and not
-presented:** GJR-GARCH and Student-t innovations (beyond what the course
-covers — kept in the code for the curious, but not part of the write-up),
-historical simulation VaR benchmark, HMM parameter-recovery simulation
-study.
+presented:** historical simulation VaR benchmark, HMM parameter-recovery
+simulation study. (GJR-GARCH and Student-t innovations were explored earlier
+but removed from the codebase entirely — beyond what the course covers, and
+not worth keeping around once they weren't going to be presented.)
 
 ### Headline results (NIFTY 50, out-of-sample 1-day 99% VaR, 2008–2026)
 
@@ -62,8 +62,8 @@ Expected rate under correct calibration is 1.00%. GBM is too conservative
 GARCH(1,1) is too aggressive; the HMM is the only one of the three that
 passes both the Kupiec and Christoffersen tests, and it also handles the
 COVID stress window best. Reproduce this table with `python -m
-src.model_comparison` (the full output also includes the GJR-GARCH/Student-t/
-historical-simulation rows kept for reference — just not part of the story).
+src.model_comparison` (the full output also includes a historical-simulation
+row kept for reference — just not part of the story).
 
 Other findings: fat tails (excess kurtosis ≈ 16, Jarque-Bera rejects
 normality), strong volatility clustering (ACF of squared returns, Ljung-Box
@@ -83,11 +83,6 @@ inside every model's first training window, since the sample starts exactly
 2008-01-01 with no earlier data to train on) — this is a genuine data
 limitation, not an oversight.
 
-Also note on `src/garch.py` and `src/model_comparison.py`: these still
-*compute* GJR-GARCH and Student-t variants (useful as a sanity check that
-plain GARCH(1,1) isn't an outlier result), but the write-up should only
-present the plain GARCH(1,1) normal row from the table above.
-
 Not yet done: report write-up itself (`reports/`); everything the course
 project needs computationally is in place.
 
@@ -98,7 +93,7 @@ python src/loaders.py                   # download/cache data
 python notebooks/01_stylized_facts.py   # stylized facts -> reports/figures/
 python -m src.gbm                       # GBM fit + simulate + VaR
 python -m src.hmm                       # HMM fit + validation + backtest
-python -m src.garch                     # GARCH/GJR-GARCH fit + backtests
+python -m src.garch                     # GARCH(1,1) fit + backtest
 python -m src.extremes                  # Poisson/Hawkes crash-day analysis
 python -m src.simulation_study          # HMM parameter-recovery check
 python -m src.model_comparison          # full side-by-side comparison table

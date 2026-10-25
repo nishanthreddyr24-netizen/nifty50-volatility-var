@@ -1,4 +1,4 @@
-"""Side-by-side out-of-sample VaR backtest comparison: GBM, HMM, GARCH family,
+"""Side-by-side out-of-sample VaR backtest comparison: GBM, HMM, GARCH(1,1),
 and historical simulation, all on the same NIFTY 50 sample and the same
 min_window/alpha, using the shared harness in var_backtest.py.
 
@@ -21,7 +21,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.garch import make_garch_forecast_fn, student_t_es, student_t_var, fit_garch
+from src.garch import make_garch_forecast_fn
 from src.gbm import fit_gbm
 from src.hmm import make_hmm_forecast_fn
 from src.loaders import load_close
@@ -91,25 +91,9 @@ def main() -> pd.DataFrame:
     print("  HMM done")
 
     results["GARCH(1,1) normal"] = rolling_var_backtest(
-        returns, make_garch_forecast_fn(o=0, dist="normal", refit_every=21), alpha=ALPHA, min_window=MIN_WINDOW
+        returns, make_garch_forecast_fn(refit_every=21), alpha=ALPHA, min_window=MIN_WINDOW
     )
     print("  GARCH(1,1) done")
-
-    results["GJR-GARCH normal"] = rolling_var_backtest(
-        returns, make_garch_forecast_fn(o=1, dist="normal", refit_every=21), alpha=ALPHA, min_window=MIN_WINDOW
-    )
-    print("  GJR-GARCH normal done")
-
-    nu_fixed = fit_garch(returns, o=1, dist="t").nu
-    results["GJR-GARCH Student-t"] = rolling_var_backtest(
-        returns,
-        make_garch_forecast_fn(o=1, dist="t", refit_every=21),
-        alpha=ALPHA,
-        min_window=MIN_WINDOW,
-        var_fn=lambda mu, sigma, a: student_t_var(mu, sigma, a, nu_fixed),
-        es_fn=lambda mu, sigma, a: student_t_es(mu, sigma, a, nu_fixed),
-    )
-    print("  GJR-GARCH Student-t done")
 
     results["Historical simulation"] = historical_sim_var_backtest(returns, window=MIN_WINDOW, alpha=ALPHA)
     print("  Historical simulation done")
