@@ -35,27 +35,60 @@ newer Python versions.)
 
 ## Status
 
-Done: data loading, log returns, stylized-facts analysis, GBM baseline
-(fit/simulate/parametric VaR), rolling VaR backtest harness with Kupiec/
-Christoffersen/traffic-light, sanity tests.
+Core analysis is done: data loading, stylized facts, GBM baseline, HMM
+regime model, GARCH family, historical simulation benchmark, extreme-event
+analysis, model comparison, and a parameter-recovery simulation study.
 
-Already-visible finding: GBM with an expanding-window volatility estimate is
-*too conservative* out-of-sample (0.44% observed 1-day-99% VaR violations vs
-1% expected on NIFTY 50, 2008–2026) — the expanding window blends calm and
-crisis volatility and lags the current regime. This is the setup for the
-regime-switching (HMM) and GARCH models to show improvement.
+### Headline results (NIFTY 50, out-of-sample 1-day 99% VaR, 2008–2026)
 
-Next: `src/hmm.py` (regime-switching, EM/MLE fit, validate against India VIX
-and 2008/2020), `src/garch.py` (GARCH(1,1) and GJR-GARCH via `arch`),
-`src/extremes.py` (crash-day Poisson/Hawkes), historical-simulation VaR
-benchmark, simulation study for parameter recovery under the regime model.
+| Model                   | Violation rate | Kupiec p | Christoffersen p | COVID window (hits/days) |
+|--------------------------|:---:|:---:|:---:|:---:|
+| GBM (expanding window)   | 0.44% | 0.00 (fails, too conservative) | 0.69 | 10/89 |
+| GARCH(1,1), normal       | 1.58% | 0.00 (fails, too aggressive) | 0.98 | 6/89 |
+| GJR-GARCH, normal        | 1.29% | 0.07 (borderline) | 0.24 | 5/89 |
+| **HMM 2-state**          | **0.92%** | **0.62 (passes)** | 0.40 | **4/89** |
+| **GJR-GARCH, Student-t** | **0.92%** | **0.62 (passes)** | 0.40 | **4/89** |
+| Historical simulation    | 1.05% | 0.77 (passes) | **0.00 (fails, clustered)** | 11/89 |
+
+Expected rate under correct calibration is 1.00%. Both the HMM and GJR-GARCH
+with Student-t innovations pass both tests cleanly and handle the COVID
+stress window best; GBM is too conservative (expanding-window vol lags the
+current regime); plain GARCH is too aggressive; historical simulation passes
+Kupiec but fails Christoffersen (its stale empirical quantile makes
+violations cluster during fast-moving crises — a known textbook weakness).
+Reproduce this table with `python -m src.model_comparison`.
+
+Other findings: fat tails (excess kurtosis ≈ 16, Jarque-Bera rejects
+normality), strong volatility clustering (ACF of squared returns, Ljung-Box
+p≈0), 21-day realized vol correlates 0.87 with India VIX, the HMM's
+highest-vol regime captures 100% of the 2008 GFC and 68.5% of the 2020 COVID
+window, crash-day counts are badly overdispersed vs. Poisson (variance/mean
+= 17.6) and a Hawkes process is strongly preferred (LR p < 1e-16, branching
+ratio 0.76), and HMM parameter recovery in a 50-replication simulation study
+shows bias well within one standard error on every parameter.
+
+Caveat worth keeping in the write-up: a 3-state HMM has two regimes (0, 1)
+that almost deterministically alternate rather than persist — that looks
+like it's fitting short-term mean-reversion rather than a true slow-moving
+volatility regime, so the 2-state model is the one actually used and trusted
+here. Also, the 2008 GFC itself can't be backtested out-of-sample (it falls
+inside every model's first training window, since the sample starts exactly
+2008-01-01 with no earlier data to train on) — this is a genuine data
+limitation, not an oversight.
+
+Not yet done: report write-up itself (`reports/`); everything the course
+project needs computationally is in place.
 
 ## Reproducing
 
 ```
-python src/loaders.py          # download/cache data
+python src/loaders.py                   # download/cache data
 python notebooks/01_stylized_facts.py   # stylized facts -> reports/figures/
-python src/gbm.py               # GBM fit + simulate + VaR
-python src/var_backtest.py      # GBM rolling VaR backtest + tests
-pytest tests/ -q                # sanity tests
+python -m src.gbm                       # GBM fit + simulate + VaR
+python -m src.hmm                       # HMM fit + validation + backtest
+python -m src.garch                     # GARCH/GJR-GARCH fit + backtests
+python -m src.extremes                  # Poisson/Hawkes crash-day analysis
+python -m src.simulation_study          # HMM parameter-recovery check
+python -m src.model_comparison          # full side-by-side comparison table
+pytest tests/ -q                        # sanity tests
 ```
