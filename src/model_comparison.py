@@ -1,5 +1,5 @@
 """Side-by-side out-of-sample VaR backtest comparison: GBM, HMM, GARCH(1,1),
-and historical simulation, all on the same NIFTY 50 sample and the same
+2-regime MS-GARCH(1,1), HMM-gated GARCH(1,1), and historical simulation, all on the same NIFTY 50 sample and the same
 min_window/alpha, using the shared harness in var_backtest.py.
 
 Note on the 2008 stress window: the price history starts 2008-01-01, so there
@@ -24,7 +24,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.garch import make_garch_forecast_fn
 from src.gbm import fit_gbm
 from src.hmm import make_hmm_forecast_fn
+from src.hmm_garch import make_hmm_garch_forecast_fn
 from src.loaders import load_close
+from src.msgarch import make_msgarch_forecast_fn
 from src.returns import log_returns
 from src.var_backtest import (
     BacktestResult,
@@ -94,6 +96,16 @@ def main() -> pd.DataFrame:
         returns, make_garch_forecast_fn(refit_every=21), alpha=ALPHA, min_window=MIN_WINDOW
     )
     print("  GARCH(1,1) done")
+
+    results["MS-GARCH(1,1) 2-regime"] = rolling_var_backtest(
+        returns, make_msgarch_forecast_fn(refit_every=63), alpha=ALPHA, min_window=MIN_WINDOW
+    )
+    print("  MS-GARCH done")
+
+    results["HMM-gated GARCH(1,1)"] = rolling_var_backtest(
+        returns, make_hmm_garch_forecast_fn(), alpha=ALPHA, min_window=MIN_WINDOW
+    )
+    print("  HMM-gated GARCH done")
 
     results["Historical simulation"] = historical_sim_var_backtest(returns, window=MIN_WINDOW, alpha=ALPHA)
     print("  Historical simulation done")
