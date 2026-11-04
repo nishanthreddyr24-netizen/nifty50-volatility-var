@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+dax,HMM-gated GARCH,231.9545328617096,8822,9322,2026-11-04 17:45:21

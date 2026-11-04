@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+nikkei225,HMM 2-state,243.59121298789978,8537,9037,2026-11-04 17:41:13

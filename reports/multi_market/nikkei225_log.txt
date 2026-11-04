@@ -1,0 +1,19 @@
+[15:59:47] nikkei225: {'n_days': 9037, 'start': '1990-01-05', 'end': '2026-11-04', 'zero_return_days': 1, 'abs_return_gt_15pct': 0, 'largest_drop': -0.13234076084751925, 'largest_rise': 0.13234592041579996}
+[15:59:47] regime study (full-sample fits)...
+[16:03:17] regime study done: HMM crisis 20.2%, MS-GARCH crisis 8.4%, crash days 237
+[16:03:17] backtests...
+[16:03:23]   GBM done in 6s
+[16:03:55]   GARCH(1,1) done in 32s
+[16:10:41]   HMM 2-state done in 406s
+[16:21:07]   HMM-gated GARCH done in 626s
+[16:21:24]   Historical simulation done in 16s
+[17:36:36] nikkei225: {'n_days': 9037, 'start': '1990-01-05', 'end': '2026-11-04', 'zero_return_days': 1, 'abs_return_gt_15pct': 0, 'largest_drop': -0.13234076084751925, 'largest_rise': 0.13234592041579996}
+[17:36:36] regime study already saved, skipping
+[17:36:36] backtests...
+[17:36:42]   GBM done in 6s
+[17:37:09]   GARCH(1,1) done in 27s
+[17:41:13]   HMM 2-state done in 244s
+[17:45:00]   HMM-gated GARCH done in 227s
+[17:45:04]   Historical simulation done in 3s
+[18:13:26]   MS-GARCH 2-regime done in 1703s
+[18:13:26] done

@@ -1,0 +1,10 @@
+[17:36:35] hangseng: {'n_days': 9091, 'start': '1990-01-03', 'end': '2026-11-04', 'zero_return_days': 5, 'abs_return_gt_15pct': 1, 'largest_drop': -0.14734570691867432, 'largest_rise': 0.17246985479407384}
+[17:36:35] regime study already saved, skipping
+[17:36:35] backtests...
+[17:36:42]   GBM done in 7s
+[17:37:13]   GARCH(1,1) done in 31s
+[17:41:03]   HMM 2-state done in 230s
+[17:44:41]   HMM-gated GARCH done in 218s
+[17:44:45]   Historical simulation done in 4s
+[18:15:02]   MS-GARCH 2-regime done in 1817s
+[18:15:02] done

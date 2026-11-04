@@ -1,0 +1,10 @@
+[17:36:36] ftse100: {'n_days': 9306, 'start': '1990-01-03', 'end': '2026-11-04', 'zero_return_days': 14, 'abs_return_gt_15pct': 0, 'largest_drop': -0.1151170613425157, 'largest_rise': 0.09384243973982075}
+[17:36:36] regime study already saved, skipping
+[17:36:36] backtests...
+[17:36:43]   GBM done in 7s
+[17:37:15]   GARCH(1,1) done in 32s
+[17:41:17]   HMM 2-state done in 242s
+[17:45:06]   HMM-gated GARCH done in 230s
+[17:45:13]   Historical simulation done in 6s
+[18:23:34]   MS-GARCH 2-regime done in 2301s
+[18:23:34] done

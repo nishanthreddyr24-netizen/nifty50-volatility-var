@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+ftse100,MS-GARCH 2-regime,2301.2324073314667,8806,9306,2026-11-04 18:23:34

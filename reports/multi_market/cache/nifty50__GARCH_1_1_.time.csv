@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+nifty50,"GARCH(1,1)",14.87415885925293,4113,4613,2026-11-04 17:36:53
