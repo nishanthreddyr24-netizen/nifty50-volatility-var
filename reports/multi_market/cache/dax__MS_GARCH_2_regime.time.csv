@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+dax,MS-GARCH 2-regime,2017.4087166786194,8822,9322,2026-11-04 18:19:01

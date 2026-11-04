@@ -1,0 +1,10 @@
+[17:36:36] sp500: {'n_days': 9277, 'start': '1990-01-03', 'end': '2026-11-03', 'zero_return_days': 5, 'abs_return_gt_15pct': 0, 'largest_drop': -0.12765219747281742, 'largest_rise': 0.10957196759533848}
+[17:36:36] regime study already saved, skipping
+[17:36:36] backtests...
+[17:36:43]   GBM done in 7s
+[17:37:19]   GARCH(1,1) done in 35s
+[17:41:25]   HMM 2-state done in 247s
+[17:45:23]   HMM-gated GARCH done in 238s
+[17:45:30]   Historical simulation done in 7s
+[18:24:18]   MS-GARCH 2-regime done in 2328s
+[18:24:18] done

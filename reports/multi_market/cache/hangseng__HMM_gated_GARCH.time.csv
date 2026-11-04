@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+hangseng,HMM-gated GARCH,218.06452703475952,8591,9091,2026-11-04 17:44:41

@@ -1,0 +1,10 @@
+[17:36:36] sensex: {'n_days': 7228, 'start': '1997-07-02', 'end': '2026-11-04', 'zero_return_days': 3, 'abs_return_gt_15pct': 1, 'largest_drop': -0.14101740044244826, 'largest_rise': 0.15989984865139878}
+[17:36:36] regime study already saved, skipping
+[17:36:36] backtests...
+[17:36:41]   GBM done in 6s
+[17:37:04]   GARCH(1,1) done in 22s
+[17:39:50]   HMM 2-state done in 166s
+[17:42:21]   HMM-gated GARCH done in 151s
+[17:42:24]   Historical simulation done in 3s
+[18:03:15]   MS-GARCH 2-regime done in 1250s
+[18:03:15] done

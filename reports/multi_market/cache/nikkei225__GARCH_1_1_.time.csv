@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+nikkei225,"GARCH(1,1)",27.107736825942993,8537,9037,2026-11-04 17:37:09

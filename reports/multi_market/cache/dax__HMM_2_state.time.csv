@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+dax,HMM 2-state,254.43005990982056,8822,9322,2026-11-04 17:41:29

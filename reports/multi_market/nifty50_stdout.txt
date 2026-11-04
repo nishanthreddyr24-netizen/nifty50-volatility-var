@@ -1,0 +1,10 @@
+[17:36:36] nifty50: {'n_days': 4613, 'start': '2008-01-02', 'end': '2026-10-23', 'zero_return_days': 4, 'abs_return_gt_15pct': 1, 'largest_drop': -0.13903756461051203, 'largest_rise': 0.16334315490680712}
+[17:36:36] regime study already saved, skipping
+[17:36:36] backtests...
+[17:36:38]   GBM done in 2s
+[17:36:53]   GARCH(1,1) done in 15s
+[17:38:11]   HMM 2-state done in 78s
+[17:39:27]   HMM-gated GARCH done in 77s
+[17:39:29]   Historical simulation done in 2s
+[17:50:11]   MS-GARCH 2-regime done in 641s
+[17:50:11] done

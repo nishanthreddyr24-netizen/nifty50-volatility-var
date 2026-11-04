@@ -1,0 +1,10 @@
+[17:36:36] dax: {'n_days': 9322, 'start': '1990-01-03', 'end': '2026-11-04', 'zero_return_days': 0, 'abs_return_gt_15pct': 0, 'largest_drop': -0.1305485870112283, 'largest_rise': 0.10797468060459708}
+[17:36:36] regime study already saved, skipping
+[17:36:36] backtests...
+[17:36:43]   GBM done in 7s
+[17:37:14]   GARCH(1,1) done in 31s
+[17:41:29]   HMM 2-state done in 254s
+[17:45:21]   HMM-gated GARCH done in 232s
+[17:45:24]   Historical simulation done in 3s
+[18:19:01]   MS-GARCH 2-regime done in 2017s
+[18:19:01] done

@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+nifty50,HMM-gated GARCH,76.67038416862488,4113,4613,2026-11-04 17:39:27

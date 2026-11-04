@@ -30,6 +30,15 @@ newer Python versions.)
   leverage effect, QQ plot, India VIX cross-check, 2008/2020 crisis windows.
   Jupytext "light" script format — plain, diffable, runnable as-is, or convert with
   `jupytext --to notebook 01_stylized_facts.py`.
+- `src/msgarch.py`, `src/hmm_garch.py` — 2-regime MS-GARCH and HMM-gated GARCH
+- `src/multi_market.py` — seven-market backtest of all six models, with per-model
+  caching/resume and run-time logging; `--aggregate` builds the cross-market tables
+- `src/crisis_validation.py` — crisis labels vs 20%-rule bear markets, NBER
+  recessions and documented event dates
+- `src/crisis_duration.py` — crisis length: HMM / MS-GARCH episodes vs actual bear markets
+- `src/regime_transitions.py` — fitted and empirical regime transition matrices
+- `src/make_multi_market_figures.py` — figures in `reports/multi_market/figures/`
+- `reports/multi_market/` — seven-market results (CSVs, logs, figures, `FINDINGS.md`)
 - `reports/figures/` — output figures
 - `tests/` — parameter-recovery and backtest-harness sanity tests
 
@@ -84,6 +93,35 @@ limitation, not an oversight.
 
 Not yet done: report write-up itself (`reports/`); everything the course
 project needs computationally is in place.
+
+### Seven-market study: does the regime result generalize?
+
+Full write-up with all tables and figures:
+[`reports/multi_market/FINDINGS.md`](reports/multi_market/FINDINGS.md).
+
+Six models (GBM, GARCH(1,1), 2-state HMM, 2-regime MS-GARCH, HMM-gated
+GARCH, historical simulation) were backtested out of sample on S&P 500, FTSE
+100, DAX, Nikkei 225, Hang Seng (all from 1990), Sensex (1997) and NIFTY 50
+(2008): about 54,000 daily VaR forecasts per model.
+
+![Violation rate by market](reports/multi_market/figures/fig01_violation_rate_by_market.png)
+
+- **The regime structure generalizes.** Every market has a calm and a crisis
+  regime (crisis 2.4-3.2x as volatile, 15-27% of days, containing 90-100% of
+  crash days). The HMM crisis regime covers 87-100% of the GFC in every market.
+- **HMM-gated GARCH is the most robust model.** It has the fewest violations
+  in 6 of 7 markets, 2 Basel red-zone years in total (HMM 11, GBM 33), and ties
+  MS-GARCH for the best tick-loss rank at about 1/8 of the run time. Its gain
+  over the plain HMM is concentrated at crisis onset (S&P 500 GFC: 22 -> 6
+  violations).
+- **Limitation.** With normal errors, no model gets 1% coverage over the 30+
+  year samples (all are too narrow, 1.25-2.6%). Only NIFTY 50 and Sensex pass.
+- **Crisis timing and length.** The HMM flags crises a median 8 trading days
+  after the market peak and ends a median 33 days after the trough. It matches
+  the NBER 2007-09 recession length within 4%, makes short crashes like COVID
+  about 4x too long, and misses slow low-volatility bear markets.
+
+![HMM vs gated by period](reports/multi_market/figures/fig02_hmm_vs_gated_by_period.png)
 
 ## Reproducing
 

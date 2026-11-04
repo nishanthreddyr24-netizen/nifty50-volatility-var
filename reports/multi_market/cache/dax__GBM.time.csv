@@ -1,0 +1,2 @@
+market,model,seconds,n_forecasts,n_history_days,finished_at
+dax,GBM,7.472894668579102,8822,9322,2026-11-04 17:36:43
