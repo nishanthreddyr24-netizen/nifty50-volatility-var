@@ -1,0 +1,30 @@
+{
+  "experiment": "pilot_exp1",
+  "variant": "EXTENDED_1990",
+  "model": "GBM",
+  "input_dataset_path": "data/processed/nifty50_nse_1990_2026.csv",
+  "input_sha256": "afe3758383e70dfb9a801dbcc7f4193b7df755d4b2d3bc16f5941c5877f32498",
+  "preflight_report": "reports/audits/exp1_exp2_calendar_preflight.json",
+  "first_forecast_date": "2010-01-20",
+  "last_forecast_date": "2026-10-30",
+  "common_evaluation_period": [
+    "2010-01-20",
+    "2026-10-30"
+  ],
+  "initial_training_count": 4669,
+  "var_confidence": 0.99,
+  "forecast_horizon": 1,
+  "refit_frequency": 1,
+  "python": "3.11.18 | packaged by Anaconda, Inc. | (main, Oct 26 2026, 18:13:29) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "package_versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.0",
+    "scipy": "1.17.1",
+    "arch": "8.0.0",
+    "hmmlearn": "0.3.3",
+    "statsmodels": "0.15.0"
+  },
+  "git_commit": "0b7a0fbe0d6d004f597ea82055d59ecb0c8a99dc",
+  "refit_logs": []
+}
