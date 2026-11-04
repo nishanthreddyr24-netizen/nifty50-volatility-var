@@ -44,7 +44,7 @@ runs = {}
 for exp, variants in LAYOUT.items():
     for v in variants:
         for m in MODELS:
-            t = pd.read_csv(R / exp / v / f"{m}.csv", float_precision="round_trip")
+            t = pd.read_csv(R / exp / v / f"{m}.csv")
             r, var, es = (t[c].to_numpy(float) for c in ("return", "var", "es"))
             assert np.array_equal(t["hit"].to_numpy(), (-r > var).astype(int))
             runs[(exp, v, m)] = dict(dates=t["date"], pin=pinball(r, var), fz=fz0(r, var, es), var=var.mean())
