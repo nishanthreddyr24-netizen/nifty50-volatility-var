@@ -51,18 +51,17 @@ not worth keeping around once they weren't going to be presented.)
 
 ### Headline results (NIFTY 50, out-of-sample 1-day 99% VaR, 2008–2026)
 
-| Model                   | Violation rate | Kupiec p | Christoffersen p | COVID window (hits/days) |
-|--------------------------|:---:|:---:|:---:|:---:|
-| GBM (expanding window)   | 0.44% | 0.00 (fails, too conservative) | 0.69 | 10/89 |
-| GARCH(1,1), normal       | 1.58% | 0.00 (fails, too aggressive) | 0.98 | 6/89 |
-| **HMM 2-state**          | **0.92%** | **0.62 (passes)** | 0.40 | **4/89** |
+| Model                  | Violation rate |            Kupiec p            | Christoffersen p | COVID window (hits/days) |
+| ---------------------- | :-------------: | :----------------------------: | :--------------: | :----------------------: |
+| GBM (expanding window) |      0.44%      | 0.00 (fails, too conservative) |       0.69       |          10/89          |
+| GARCH(1,1), normal     |      1.58%      |  0.00 (fails, too aggressive)  |       0.98       |           6/89           |
+| **HMM 2-state**  | **0.92%** |    **0.62 (passes)**    |       0.40       |      **4/89**      |
 
 Expected rate under correct calibration is 1.00%. GBM is too conservative
 (its expanding-window volatility estimate lags the current regime); plain
 GARCH(1,1) is too aggressive; the HMM is the only one of the three that
 passes both the Kupiec and Christoffersen tests, and it also handles the
-COVID stress window best. Reproduce this table with `python -m
-src.model_comparison` (the full output also includes a historical-simulation
+COVID stress window best. Reproduce this table with `python -m src.model_comparison` (the full output also includes a historical-simulation
 row kept for reference — just not part of the story).
 
 Other findings: fat tails (excess kurtosis ≈ 16, Jarque-Bera rejects
