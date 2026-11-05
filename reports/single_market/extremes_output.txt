@@ -1,0 +1,46 @@
+Crash-day threshold: daily log return < -3.0%
+Total crash days: 78 out of 4613 (1.69%)
+
+Crash days per calendar year:
+Date
+2008    35
+2009    15
+2010     1
+2011     2
+2012     0
+2013     3
+2014     0
+2015     2
+2016     1
+2017     0
+2018     0
+2019     0
+2020    12
+2021     2
+2022     2
+2023     0
+2024     1
+2025     1
+2026     1
+Name: log_return, dtype: int64
+
+=== Poisson fit + equidispersion test ===
+  n_periods: 19
+  lambda_hat: 4.1053
+  variance: 72.4327
+  dispersion_index: 17.6439
+  D_stat: 317.5897
+  df: 18
+  p_value: 0.0000
+  overdispersed_at_5pct: True
+
+=== Hawkes process (self-exciting) fit ===
+  mu (background rate) = 0.00271 events/day  (~0.7/year)
+  alpha (excitation jump) = 0.02881
+  beta (decay rate) = 0.03786  (half-life ~ 18.3 days)
+  branching ratio alpha/beta = 0.761  (expected 'children' per event)
+  log-likelihood = -347.14
+
+  Poisson log-likelihood (for comparison) = -427.29
+  LR test (Hawkes vs Poisson): stat=160.29, p-value=0.00e+00
+  -> Hawkes preferred at 5%: True

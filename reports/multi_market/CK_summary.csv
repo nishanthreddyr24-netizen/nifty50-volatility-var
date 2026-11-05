@@ -1,0 +1,50 @@
+market,check,model,horizons_passed,horizons,mean_abs_error
+dax,crash days,HMM 2-state,35,40,0.03256328996709583
+dax,crash days,Observed Markov chain,4,40,0.06526505221029902
+dax,crash days,Poisson (i.i.d.),3,40,0.06733197033372457
+ftse100,crash days,HMM 2-state,34,40,0.0436091139939853
+ftse100,crash days,Observed Markov chain,14,40,0.061187989227916295
+ftse100,crash days,Poisson (i.i.d.),12,40,0.06339458413926499
+hangseng,crash days,HMM 2-state,39,40,0.01910553853370635
+hangseng,crash days,Observed Markov chain,7,40,0.06640089600987223
+hangseng,crash days,Poisson (i.i.d.),6,40,0.0696278228654907
+nifty50,crash days,HMM 2-state,39,40,0.044262648402174566
+nifty50,crash days,Observed Markov chain,38,40,0.08394706731921145
+nifty50,crash days,Poisson (i.i.d.),38,40,0.08629639202476835
+nikkei225,crash days,HMM 2-state,39,40,0.01311635820102577
+nikkei225,crash days,Observed Markov chain,21,40,0.037701097874744564
+nikkei225,crash days,Poisson (i.i.d.),20,40,0.039860980572601436
+sensex,crash days,HMM 2-state,37,40,0.031531045436782826
+sensex,crash days,Observed Markov chain,18,40,0.06318543463932463
+sensex,crash days,Poisson (i.i.d.),17,40,0.06586947948272681
+sp500,crash days,HMM 2-state,39,40,0.05511098669481934
+sp500,crash days,Observed Markov chain,20,40,0.07663378675077732
+sp500,crash days,Poisson (i.i.d.),19,40,0.07890809903876347
+dax,regime flags,Flags' one-step matrix (calm),2,40,0.0877077834331892
+dax,regime flags,Flags' one-step matrix (crisis),2,40,0.23902738245161834
+dax,regime flags,HMM fitted matrix (calm),33,40,0.026170475438838103
+dax,regime flags,HMM fitted matrix (crisis),31,40,0.05698205705283264
+ftse100,regime flags,Flags' one-step matrix (calm),3,40,0.06621983022716234
+ftse100,regime flags,Flags' one-step matrix (crisis),2,40,0.24220659134416578
+ftse100,regime flags,HMM fitted matrix (calm),34,40,0.025769759831723
+ftse100,regime flags,HMM fitted matrix (crisis),31,40,0.06776420916545907
+hangseng,regime flags,Flags' one-step matrix (calm),2,40,0.07272093064849132
+hangseng,regime flags,Flags' one-step matrix (crisis),2,40,0.2842330030243079
+hangseng,regime flags,HMM fitted matrix (calm),34,40,0.02240353455032628
+hangseng,regime flags,HMM fitted matrix (crisis),31,40,0.06845799677231797
+nifty50,regime flags,Flags' one-step matrix (calm),3,40,0.05286237122212162
+nifty50,regime flags,Flags' one-step matrix (crisis),37,40,0.28560976610221667
+nifty50,regime flags,HMM fitted matrix (calm),15,40,0.0310658234807192
+nifty50,regime flags,HMM fitted matrix (crisis),35,40,0.1002078618539785
+nikkei225,regime flags,Flags' one-step matrix (calm),7,40,0.04364092847447516
+nikkei225,regime flags,Flags' one-step matrix (crisis),1,40,0.17529505369623705
+nikkei225,regime flags,HMM fitted matrix (calm),21,40,0.025347157356109422
+nikkei225,regime flags,HMM fitted matrix (crisis),28,40,0.04213945928271129
+sensex,regime flags,Flags' one-step matrix (calm),3,40,0.07759295254762752
+sensex,regime flags,Flags' one-step matrix (crisis),2,40,0.23835959997199008
+sensex,regime flags,HMM fitted matrix (calm),31,40,0.03311136078279815
+sensex,regime flags,HMM fitted matrix (crisis),32,40,0.07095383368361516
+sp500,regime flags,Flags' one-step matrix (calm),2,40,0.08363106293918887
+sp500,regime flags,Flags' one-step matrix (crisis),1,40,0.24807540176396686
+sp500,regime flags,HMM fitted matrix (calm),34,40,0.02838864086723179
+sp500,regime flags,HMM fitted matrix (crisis),30,40,0.06489236654520966

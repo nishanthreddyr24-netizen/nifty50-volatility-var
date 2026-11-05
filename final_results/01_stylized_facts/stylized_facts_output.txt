@@ -1,0 +1,27 @@
+NIFTY 50: 4614 prices, 2008-01-01 to 2026-10-23
+Log returns: 4613 observations
+n_obs                  4613.000000
+mean_daily                0.000282
+std_daily                 0.012787
+mean_annualized           0.071149
+vol_annualized            0.202987
+skew                     -0.316736
+excess_kurtosis          15.921426
+min                      -0.139038
+max                       0.163343
+jarque_bera_stat      48800.368095
+jarque_bera_pvalue        0.000000
+dtype: float64
+Jarque-Bera stat=48800.4, p-value=0.00e+00 -> reject Normality: True
+Ljung-Box on returns (p-values):
+ 10    2.282813e-05
+20    9.955312e-08
+Name: lb_pvalue, dtype: float64
+Ljung-Box on squared returns (p-values):
+ 10    0.0
+20    0.0
+Name: lb_pvalue, dtype: float64
+Correlation(21d realized vol, India VIX) = 0.872
+Correlation(return_t, vol_change_{t+1}) = -0.014 (negative => leverage effect)
+
+Figures written to D:\ASM_PROJECT\reports\figures

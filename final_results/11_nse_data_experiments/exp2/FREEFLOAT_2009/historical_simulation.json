@@ -1,0 +1,44 @@
+{
+  "experiment": "exp2",
+  "variant": "FREEFLOAT_2009",
+  "model": "Historical Simulation",
+  "input_dataset_path": "data/processed/nifty50_nse_1990_2026.csv",
+  "input_sha256": "afe3758383e70dfb9a801dbcc7f4193b7df755d4b2d3bc16f5941c5877f32498",
+  "preflight_report": "reports/audits/exp1_exp2_calendar_preflight.json",
+  "first_forecast_date": "2011-06-28",
+  "last_forecast_date": "2026-10-30",
+  "common_evaluation_period": [
+    "2011-06-28",
+    "2026-10-30"
+  ],
+  "initial_training_count": 500,
+  "var_confidence": 0.99,
+  "forecast_horizon": 1,
+  "refit_frequency": 500,
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "package_versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scipy": "1.18.1",
+    "arch": "8.0.0",
+    "hmmlearn": "0.3.3",
+    "statsmodels": "0.15.0"
+  },
+  "git_commit": "0b7a0fbe0d6d004f597ea82055d59ecb0c8a99dc",
+  "refit_logs": [],
+  "launcher": {
+    "status": "reused",
+    "reuse": {
+      "source_experiment": "exp1",
+      "source_variant": "EXTENDED_1990",
+      "source_csv": "results\\exp1\\EXTENDED_1990\\historical_simulation.csv",
+      "source_csv_sha256": "e5f31ea9bad5afe6e949a5391b082133e6977cbe7a4c8d827a65dcc4197f9721",
+      "checks": [
+        "target forecast dates/returns/training_end/n_train recomputed from target variant frame",
+        "source table passed full validation incl. independent recomputation",
+        "all 500-return windows identical (HS)"
+      ]
+    }
+  }
+}

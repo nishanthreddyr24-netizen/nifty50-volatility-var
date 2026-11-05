@@ -1,0 +1,21 @@
+Running backtests (this refits each model hundreds of times; a minute or two)...
+  GBM done
+  HMM done
+  GARCH(1,1) done
+  MS-GARCH done
+  HMM-gated GARCH done
+  Historical simulation done
+
+====================================================================================================
+Out-of-sample 1-day 99% VaR backtest comparison, NIFTY 50, min_window=500
+Expected violation rate under correct calibration: 1.00%
+====================================================================================================
+                 model  n_obs  n_violations  violation_rate  kupiec_p  kupiec_reject  christoffersen_p  christoffersen_reject  traffic_green  traffic_yellow  traffic_red covid_violations
+GBM (expanding window)   4113            18        0.004376  0.000045           True          0.690744                  False             15               1            0            10/89
+           HMM 2-state   4113            38        0.009239  0.619279          False          0.399811                  False             15               1            0             4/89
+     GARCH(1,1) normal   4113            65        0.015804  0.000563           True          0.977928                  False             10               6            0             6/89
+MS-GARCH(1,1) 2-regime   4113            42        0.010212  0.891926          False          0.351830                  False             12               4            0             6/89
+  HMM-gated GARCH(1,1)   4113            38        0.009239  0.619279          False          0.399811                  False             15               1            0             4/89
+ Historical simulation   4113            43        0.010455  0.771132          False          0.000913                   True             11               4            1            11/89
+
+Note: the 2008 GFC (Sep 2008-Mar 2009) falls inside every model's first 500-day training window (the sample starts 2008-01-01, so there is no earlier data to train on) and is therefore not backtestable out-of-sample here without look-ahead. The Mar-Jun 2020 COVID crash column above is the real stress test.

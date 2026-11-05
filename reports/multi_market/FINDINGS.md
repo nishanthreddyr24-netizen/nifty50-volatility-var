@@ -150,6 +150,46 @@ Expected stay in a regime = 1 / (1 - P(stay)).
   crisis length.
 - Full numbers (fitted and empirical, both models): `ALL_transition_matrices.csv`.
 
+### Chapman-Kolmogorov check
+
+![Chapman-Kolmogorov check](figures/fig11_chapman_kolmogorov.png)
+
+For a Markov chain, the n-step transition matrix must equal P^n. We compare
+each model's n-step prediction with the empirical n-step frequency at
+horizons 1-40 trading days. A model passes at a horizon if its value is inside
+the 95% moving-block-bootstrap band of the empirical value (250-day blocks,
+1,000 replications). Fits are full sample, so this is a goodness-of-fit check.
+
+Crash days, P(crash at t+n | crash at t), horizons passed out of 40:
+
+| Market | Poisson | Observed Markov chain on crash flag | HMM 2-state |
+|---|---|---|---|
+| S&P 500 | 19 | 20 | 39 |
+| FTSE 100 | 12 | 14 | 34 |
+| DAX | 3 | 4 | 35 |
+| Nikkei 225 | 20 | 21 | 39 |
+| Hang Seng | 6 | 7 | 39 |
+| Sensex | 17 | 18 | 37 |
+| NIFTY 50 | 38 | 38 | 39 |
+| All (of 280) | 115 (41%) | 122 (44%) | 262 (94%) |
+
+- After a crash, the chance of another crash averages 8-13% over the next
+  20 days, against a 1-3% base rate (3-9x). The observed chain's memory dies
+  within 2-3 days; the hidden regime chain reproduces the slow decay.
+- NIFTY cannot discriminate (short sample, crashes concentrated in 2008-09,
+  bootstrap band reaches 0). Excluding NIFTY: HMM 223/240, chain 84/240,
+  Poisson 77/240.
+- The HMM's curve sits below the empirical one in the Western markets: normal
+  errors give crash days too little probability, the same thin-tail problem
+  that breaks VaR coverage.
+
+Regime flags, P(same regime at t+n | regime at t): the flags' own one-step
+matrix passes only 69 of 560 horizon checks (calm + crisis), because single
+noisy days flip the daily flags. The HMM's fitted matrix passes 420 of 560
+(75%), failing mainly at n = 1-5. This is why crisis spells are merged across
+short gaps in the length study. Files: `CK_crash_days.csv`,
+`CK_regime_flags.csv`, `CK_summary.csv`.
+
 ## 5. Do the crisis labels match real crises?
 
 Labels are full-sample (in-sample) fits, so this section is descriptive; the
@@ -223,5 +263,6 @@ python -m src.multi_market --aggregate
 python -m src.crisis_validation
 python -m src.crisis_duration
 python -m src.regime_transitions
+python -m src.chapman_kolmogorov
 python -m src.make_multi_market_figures
 ```

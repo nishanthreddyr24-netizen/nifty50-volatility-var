@@ -1,0 +1,45 @@
+=== Model selection: 2 vs 3 states (full sample) ===
+n_states=2: logL=14524.0  AIC=-29034.1  BIC=-28989.0
+n_states=3: logL=14535.4  AIC=-29042.8  BIC=-28952.7
+
+=== Fitted 3-state HMM (full sample) ===
+  regime 0: mu_annual=+17.34%  sigma_annual=11.87%
+  regime 1: mu_annual=+7.87%  sigma_annual=16.61%
+  regime 2: mu_annual=-27.85%  sigma_annual=41.02%
+  transition matrix (rows=from, cols=to, regime order 0..2):
+[[0.354 0.635 0.011]
+ [0.996 0.003 0.001]
+ [0.    0.037 0.963]]
+
+  regime frequencies:
+ regime
+0    0.422718
+1    0.401691
+2    0.175591
+Name: proportion, dtype: float64
+
+=== Validation against India VIX ===
+  mean India VIX by regime:
+ regime
+0    16.736399
+1    16.774677
+2    33.960957
+Name: india_vix, dtype: float64
+
+=== Validation against known crisis windows ===
+  2008 GFC: 100.0% of days classified in the highest-vol regime
+  2020 COVID: 68.5% of days classified in the highest-vol regime
+
+=== Moment-matched normal VaR vs exact mixture VaR (sanity check) ===
+  2022-10-04: moment-matched normal VaR=2.8509%  exact mixture VaR=3.9927%
+  2025-10-17: moment-matched normal VaR=2.1173%  exact mixture VaR=2.2198%
+  2026-10-23: moment-matched normal VaR=2.1278%  exact mixture VaR=2.2307%
+
+=== Rolling out-of-sample VaR backtest (HMM, 2-state, refit every 63 days) ===
+Backtest: 4113 obs, 38 violations, rate=0.9239%
+Kupiec: {'test': 'Kupiec POF', 'n_obs': 4113, 'n_violations': 38, 'expected_violations': 41.13, 'violation_rate': 0.0092, 'expected_rate': 0.01, 'LR_stat': np.float64(0.2469), 'p_value': np.float64(0.6193), 'reject_at_5pct': np.False_}
+Christoffersen: {'test': 'Christoffersen independence', 'n00': 4036, 'n01': 38, 'n10': 38, 'n11': 0, 'pi01': 0.0093, 'pi11': 0.0, 'LR_stat': np.float64(0.7089), 'p_value': np.float64(0.3998), 'reject_at_5pct': np.False_}
+zone
+green     15
+yellow     1
+Name: count, dtype: int64

@@ -1,0 +1,136 @@
+file,size_kb,source,description
+01_stylized_facts/stylized_facts_output.txt,0.9,reports/single_market/stylized_facts_output.txt,"NIFTY 50 summary stats, Jarque-Bera, Ljung-Box, VIX and leverage correlations"
+01_stylized_facts/01_price_and_returns.png,104.8,reports/figures/01_price_and_returns.png,NIFTY 50 price and daily log returns
+01_stylized_facts/02_fat_tails.png,52.9,reports/figures/02_fat_tails.png,"Return histogram vs normal, QQ plot"
+01_stylized_facts/03_acf_clustering.png,29.3,reports/figures/03_acf_clustering.png,ACF of returns vs squared returns
+01_stylized_facts/04_vol_vs_vix.png,111.9,reports/figures/04_vol_vs_vix.png,21-day realised vol vs India VIX
+01_stylized_facts/05_crisis_windows.png,82.6,reports/figures/05_crisis_windows.png,2008 GFC and 2020 COVID windows
+02_nifty_model_comparison/model_comparison_output.txt,2.1,reports/single_market/model_comparison_output.txt,"Six-model VaR backtest on NIFTY 50 (Kupiec, Christoffersen, Basel, COVID window, regimes)"
+02_nifty_model_comparison/hmm_regime_output.txt,1.8,reports/single_market/hmm_regime_output.txt,"Full-sample HMM: regimes, 2 vs 3 states (AIC/BIC), India VIX and crisis-window checks, mixture VaR"
+02_nifty_model_comparison/nifty50_backtest.csv,1.5,reports/multi_market/nifty50_backtest.csv,"NIFTY 50 backtest table per model (seven-market run, identical numbers)"
+02_nifty_model_comparison/nifty50_var_paths.csv,678.5,reports/multi_market/nifty50_var_paths.csv,"NIFTY 50 daily return, VaR and hit for every model"
+03_extreme_events_poisson_hawkes/extremes_output.txt,1.0,reports/single_market/extremes_output.txt,"Crash days per year, Poisson dispersion test, Hawkes fit and LR test"
+04_hmm_simulation_study/simulation_study_output.txt,1.0,reports/single_market/simulation_study_output.txt,HMM parameter recovery: 50 simulated samples refit by EM
+05_seven_market_var_backtest/ALL_backtest.csv,11.9,reports/multi_market/ALL_backtest.csv,"Every market x model: violations, Kupiec, Christoffersen, Basel zones, sub-periods"
+05_seven_market_var_backtest/sp500_backtest.csv,2.0,reports/multi_market/sp500_backtest.csv,sp500: backtest table per model
+05_seven_market_var_backtest/ftse100_backtest.csv,2.0,reports/multi_market/ftse100_backtest.csv,ftse100: backtest table per model
+05_seven_market_var_backtest/dax_backtest.csv,2.1,reports/multi_market/dax_backtest.csv,dax: backtest table per model
+05_seven_market_var_backtest/nikkei225_backtest.csv,2.0,reports/multi_market/nikkei225_backtest.csv,nikkei225: backtest table per model
+05_seven_market_var_backtest/hangseng_backtest.csv,2.0,reports/multi_market/hangseng_backtest.csv,hangseng: backtest table per model
+05_seven_market_var_backtest/sensex_backtest.csv,2.0,reports/multi_market/sensex_backtest.csv,sensex: backtest table per model
+05_seven_market_var_backtest/nifty50_backtest.csv,1.5,reports/multi_market/nifty50_backtest.csv,nifty50: backtest table per model
+05_seven_market_var_backtest/sp500_var_paths.csv,1450.1,reports/multi_market/sp500_var_paths.csv,"sp500: daily return, VaR and hit for every model"
+05_seven_market_var_backtest/ftse100_var_paths.csv,1454.4,reports/multi_market/ftse100_var_paths.csv,"ftse100: daily return, VaR and hit for every model"
+05_seven_market_var_backtest/dax_var_paths.csv,1450.0,reports/multi_market/dax_var_paths.csv,"dax: daily return, VaR and hit for every model"
+05_seven_market_var_backtest/nikkei225_var_paths.csv,1399.8,reports/multi_market/nikkei225_var_paths.csv,"nikkei225: daily return, VaR and hit for every model"
+05_seven_market_var_backtest/hangseng_var_paths.csv,1410.0,reports/multi_market/hangseng_var_paths.csv,"hangseng: daily return, VaR and hit for every model"
+05_seven_market_var_backtest/sensex_var_paths.csv,1105.5,reports/multi_market/sensex_var_paths.csv,"sensex: daily return, VaR and hit for every model"
+05_seven_market_var_backtest/nifty50_var_paths.csv,678.5,reports/multi_market/nifty50_var_paths.csv,"nifty50: daily return, VaR and hit for every model"
+05_seven_market_var_backtest/fig01_violation_rate_by_market.png,67.8,reports/multi_market/figures/fig01_violation_rate_by_market.png,Violation rate by market and model
+05_seven_market_var_backtest/fig02_hmm_vs_gated_by_period.png,95.1,reports/multi_market/figures/fig02_hmm_vs_gated_by_period.png,HMM vs HMM-gated GARCH violations by period
+05_seven_market_var_backtest/fig03_sp500_gfc_var_paths.png,137.5,reports/multi_market/figures/fig03_sp500_gfc_var_paths.png,S&P 500 VaR paths through the GFC
+05_seven_market_var_backtest/fig04_basel_red_years.png,56.7,reports/multi_market/figures/fig04_basel_red_years.png,Basel red-zone years by model
+06_forecast_skill_and_runtime/ALL_forecast_skill.csv,4.0,reports/multi_market/ALL_forecast_skill.csv,"Tick loss, skill vs GBM, rank, Diebold-Mariano vs HMM"
+06_forecast_skill_and_runtime/ALL_timings.csv,3.8,reports/multi_market/ALL_timings.csv,"Run time and ms per forecast, every model and market"
+06_forecast_skill_and_runtime/fig05_forecast_skill.png,111.6,reports/multi_market/figures/fig05_forecast_skill.png,Forecast skill vs GBM
+06_forecast_skill_and_runtime/fig10_runtime.png,52.0,reports/multi_market/figures/fig10_runtime.png,Run time per model
+07_regimes_and_transitions/ALL_regimes.csv,2.8,reports/multi_market/ALL_regimes.csv,"Regime summary per market: crisis share, crash days in crisis, regime vols"
+07_regimes_and_transitions/ALL_crisis_windows.csv,4.7,reports/multi_market/ALL_crisis_windows.csv,Share of each documented crisis window flagged by HMM and MS-GARCH
+07_regimes_and_transitions/ALL_transition_matrices.csv,4.8,reports/multi_market/ALL_transition_matrices.csv,"Fitted and empirical transition matrices, expected stays, switches per year"
+07_regimes_and_transitions/sp500_regimes.csv,0.7,reports/multi_market/sp500_regimes.csv,sp500: regime summary
+07_regimes_and_transitions/ftse100_regimes.csv,0.7,reports/multi_market/ftse100_regimes.csv,ftse100: regime summary
+07_regimes_and_transitions/dax_regimes.csv,0.7,reports/multi_market/dax_regimes.csv,dax: regime summary
+07_regimes_and_transitions/nikkei225_regimes.csv,0.7,reports/multi_market/nikkei225_regimes.csv,nikkei225: regime summary
+07_regimes_and_transitions/hangseng_regimes.csv,0.7,reports/multi_market/hangseng_regimes.csv,hangseng: regime summary
+07_regimes_and_transitions/sensex_regimes.csv,0.7,reports/multi_market/sensex_regimes.csv,sensex: regime summary
+07_regimes_and_transitions/nifty50_regimes.csv,0.7,reports/multi_market/nifty50_regimes.csv,nifty50: regime summary
+07_regimes_and_transitions/sp500_crisis_windows.csv,0.8,reports/multi_market/sp500_crisis_windows.csv,sp500: crisis-window coverage
+07_regimes_and_transitions/ftse100_crisis_windows.csv,0.7,reports/multi_market/ftse100_crisis_windows.csv,ftse100: crisis-window coverage
+07_regimes_and_transitions/dax_crisis_windows.csv,0.7,reports/multi_market/dax_crisis_windows.csv,dax: crisis-window coverage
+07_regimes_and_transitions/nikkei225_crisis_windows.csv,0.8,reports/multi_market/nikkei225_crisis_windows.csv,nikkei225: crisis-window coverage
+07_regimes_and_transitions/hangseng_crisis_windows.csv,0.8,reports/multi_market/hangseng_crisis_windows.csv,hangseng: crisis-window coverage
+07_regimes_and_transitions/sensex_crisis_windows.csv,0.8,reports/multi_market/sensex_crisis_windows.csv,sensex: crisis-window coverage
+07_regimes_and_transitions/nifty50_crisis_windows.csv,0.5,reports/multi_market/nifty50_crisis_windows.csv,nifty50: crisis-window coverage
+07_regimes_and_transitions/sp500_regime_flags.csv,647.2,reports/multi_market/sp500_regime_flags.csv,"sp500: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
+07_regimes_and_transitions/ftse100_regime_flags.csv,649.6,reports/multi_market/ftse100_regime_flags.csv,"ftse100: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
+07_regimes_and_transitions/dax_regime_flags.csv,648.1,reports/multi_market/dax_regime_flags.csv,"dax: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
+07_regimes_and_transitions/nikkei225_regime_flags.csv,628.7,reports/multi_market/nikkei225_regime_flags.csv,"nikkei225: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
+07_regimes_and_transitions/hangseng_regime_flags.csv,634.8,reports/multi_market/hangseng_regime_flags.csv,"hangseng: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
+07_regimes_and_transitions/sensex_regime_flags.csv,503.4,reports/multi_market/sensex_regime_flags.csv,"sensex: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
+07_regimes_and_transitions/nifty50_regime_flags.csv,323.6,reports/multi_market/nifty50_regime_flags.csv,"nifty50: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
+07_regimes_and_transitions/fig06_transition_matrices.png,169.4,reports/multi_market/figures/fig06_transition_matrices.png,"Transition matrices, all markets"
+07_regimes_and_transitions/fig07_regime_timeline.png,68.2,reports/multi_market/figures/fig07_regime_timeline.png,"Regime timeline, all markets"
+07_regimes_and_transitions/fig08_crisis_days_by_market.png,92.4,reports/multi_market/figures/fig08_crisis_days_by_market.png,Crisis share and crash days by market
+08_chapman_kolmogorov/CK_summary.csv,3.4,reports/multi_market/CK_summary.csv,Horizons passed out of 40 per market and model
+08_chapman_kolmogorov/CK_crash_days.csv,93.6,reports/multi_market/CK_crash_days.csv,"Crash days: empirical n-step probability, bootstrap band, each model's value, pass flag"
+08_chapman_kolmogorov/CK_regime_flags.csv,135.8,reports/multi_market/CK_regime_flags.csv,Regime flags: empirical n-step probability vs one-step matrix power and HMM matrix power
+08_chapman_kolmogorov/fig11_chapman_kolmogorov.png,346.7,reports/multi_market/figures/fig11_chapman_kolmogorov.png,"Chapman-Kolmogorov check on crash days, 7 markets"
+09_crisis_timing_and_length/VALIDATION_bear_markets.csv,8.1,reports/multi_market/VALIDATION_bear_markets.csv,83 bear markets (20% rule) with HMM / MS-GARCH start lags
+09_crisis_timing_and_length/VALIDATION_overlap.csv,1.5,reports/multi_market/VALIDATION_overlap.csv,Day-level overlap of crisis flags with bear markets
+09_crisis_timing_and_length/VALIDATION_events.csv,1.5,reports/multi_market/VALIDATION_events.csv,Lags against dated events and NBER recession coverage
+09_crisis_timing_and_length/VALIDATION_crisis_duration.csv,47.3,reports/multi_market/VALIDATION_crisis_duration.csv,Crisis episode length vs bear-market length
+09_crisis_timing_and_length/fig09_crisis_duration.png,92.0,reports/multi_market/figures/fig09_crisis_duration.png,Crisis length vs bear-market length
+10_trading_applications/TRADE_vrp_summary.csv,6.5,reports/multi_market/TRADE_vrp_summary.csv,"Options trade (sell one-month variance at VIX): every strategy, Sharpe, drawdown, crisis P&L, pass flags"
+10_trading_applications/TRADE_vrp_trades.csv,287.9,reports/multi_market/TRADE_vrp_trades.csv,"Every monthly options trade: strike, realised vol, forecasts, P&L per strategy"
+10_trading_applications/TRADE_voltarget_summary.csv,17.0,reports/multi_market/TRADE_voltarget_summary.csv,"Volatility targeting: every market x model, Sharpe, drawdown, budget breaches, pass flags"
+10_trading_applications/fig12_vrp_trade.png,196.8,reports/multi_market/figures/fig12_vrp_trade.png,"Cumulative P&L of the options trade, S&P 500 and NIFTY 50"
+10_trading_applications/fig13_vol_targeting.png,219.1,reports/multi_market/figures/fig13_vol_targeting.png,S&P 500 volatility targeting: growth and drawdown
+11_nse_data_experiments/validation_exp1_exp2.json,6.3,results/validation_exp1_exp2.json,Validation status of every Exp 1 / Exp 2 run
+11_nse_data_experiments/exp1/summary_priority.json,7.0,results/exp1/summary_priority.json,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/BASELINE_CONFIGURED_2008/garch.csv,543.5,results/exp1/BASELINE_CONFIGURED_2008/garch.csv,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/BASELINE_CONFIGURED_2008/garch.json,68.5,results/exp1/BASELINE_CONFIGURED_2008/garch.json,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/BASELINE_CONFIGURED_2008/gbm.csv,533.0,results/exp1/BASELINE_CONFIGURED_2008/gbm.csv,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/BASELINE_CONFIGURED_2008/gbm.json,1.1,results/exp1/BASELINE_CONFIGURED_2008/gbm.json,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/BASELINE_CONFIGURED_2008/historical_simulation.csv,607.4,results/exp1/BASELINE_CONFIGURED_2008/historical_simulation.csv,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/BASELINE_CONFIGURED_2008/historical_simulation.json,1.1,results/exp1/BASELINE_CONFIGURED_2008/historical_simulation.json,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/EXTENDED_1990/garch.csv,499.2,results/exp1/EXTENDED_1990/garch.csv,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/EXTENDED_1990/garch.json,68.5,results/exp1/EXTENDED_1990/garch.json,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/EXTENDED_1990/gbm.csv,488.4,results/exp1/EXTENDED_1990/gbm.csv,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/EXTENDED_1990/gbm.json,1.1,results/exp1/EXTENDED_1990/gbm.json,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/EXTENDED_1990/historical_simulation.csv,563.2,results/exp1/EXTENDED_1990/historical_simulation.csv,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp1/EXTENDED_1990/historical_simulation.json,1.1,results/exp1/EXTENDED_1990/historical_simulation.json,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
+11_nse_data_experiments/exp2/summary_priority.json,11.3,results/exp2/summary_priority.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/FREEFLOAT_2009/garch.csv,459.4,results/exp2/FREEFLOAT_2009/garch.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/FREEFLOAT_2009/garch.json,62.8,results/exp2/FREEFLOAT_2009/garch.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/FREEFLOAT_2009/gbm.csv,452.1,results/exp2/FREEFLOAT_2009/gbm.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/FREEFLOAT_2009/gbm.json,1.1,results/exp2/FREEFLOAT_2009/gbm.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/FREEFLOAT_2009/historical_simulation.csv,517.8,results/exp2/FREEFLOAT_2009/historical_simulation.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/FREEFLOAT_2009/historical_simulation.json,1.5,results/exp2/FREEFLOAT_2009/historical_simulation.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/LAUNCHED_1996/garch.csv,456.0,results/exp2/LAUNCHED_1996/garch.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/LAUNCHED_1996/garch.json,62.7,results/exp2/LAUNCHED_1996/garch.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/LAUNCHED_1996/gbm.csv,446.1,results/exp2/LAUNCHED_1996/gbm.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/LAUNCHED_1996/gbm.json,1.1,results/exp2/LAUNCHED_1996/gbm.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/LAUNCHED_1996/historical_simulation.csv,514.5,results/exp2/LAUNCHED_1996/historical_simulation.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/LAUNCHED_1996/historical_simulation.json,1.5,results/exp2/LAUNCHED_1996/historical_simulation.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/PRELAUNCH_1990/garch.csv,459.7,results/exp2/PRELAUNCH_1990/garch.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/PRELAUNCH_1990/garch.json,62.8,results/exp2/PRELAUNCH_1990/garch.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/PRELAUNCH_1990/gbm.csv,449.8,results/exp2/PRELAUNCH_1990/gbm.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/PRELAUNCH_1990/gbm.json,1.5,results/exp2/PRELAUNCH_1990/gbm.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/PRELAUNCH_1990/historical_simulation.csv,518.3,results/exp2/PRELAUNCH_1990/historical_simulation.csv,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/exp2/PRELAUNCH_1990/historical_simulation.json,1.5,results/exp2/PRELAUNCH_1990/historical_simulation.json,"Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"
+11_nse_data_experiments/audits/exp1_exp2_calendar_preflight.json,217.9,reports/audits/exp1_exp2_calendar_preflight.json,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
+11_nse_data_experiments/audits/nifty50_nse_yahoo_comparison.csv,464.9,reports/audits/nifty50_nse_yahoo_comparison.csv,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
+11_nse_data_experiments/audits/nifty50_nse_yahoo_summary.json,109.3,reports/audits/nifty50_nse_yahoo_summary.json,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
+11_nse_data_experiments/audits/nifty50_weekend_date_audit.csv,8.3,reports/audits/nifty50_weekend_date_audit.csv,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
+11_nse_data_experiments/audits/nifty50_weekend_date_audit.json,19.1,reports/audits/nifty50_weekend_date_audit.json,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
+11_nse_data_experiments/audits/nifty50_weekend_date_evidence_supplement.csv,12.8,reports/audits/nifty50_weekend_date_evidence_supplement.csv,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
+11_nse_data_experiments/audits/nifty50_weekend_date_evidence_supplement.json,31.9,reports/audits/nifty50_weekend_date_evidence_supplement.json,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
+11_nse_data_experiments/reproducibility/loss_comparison_exp1_exp2.txt,8.1,reports/reproducibility/loss_comparison_exp1_exp2.txt,Loss comparison between Exp 1 and Exp 2
+12_run_logs/sp500_log.txt,1.0,reports/multi_market/sp500_log.txt,sp500: run log of the seven-market backtest
+12_run_logs/ftse100_log.txt,1.0,reports/multi_market/ftse100_log.txt,ftse100: run log of the seven-market backtest
+12_run_logs/dax_log.txt,1.0,reports/multi_market/dax_log.txt,dax: run log of the seven-market backtest
+12_run_logs/nikkei225_log.txt,1.1,reports/multi_market/nikkei225_log.txt,nikkei225: run log of the seven-market backtest
+12_run_logs/hangseng_log.txt,1.1,reports/multi_market/hangseng_log.txt,hangseng: run log of the seven-market backtest
+12_run_logs/sensex_log.txt,1.1,reports/multi_market/sensex_log.txt,sensex: run log of the seven-market backtest
+12_run_logs/nifty50_log.txt,1.1,reports/multi_market/nifty50_log.txt,nifty50: run log of the seven-market backtest
+12_run_logs/sp500_stdout.txt,0.5,reports/multi_market/sp500_stdout.txt,sp500: console output of the seven-market backtest
+12_run_logs/ftse100_stdout.txt,0.5,reports/multi_market/ftse100_stdout.txt,ftse100: console output of the seven-market backtest
+12_run_logs/dax_stdout.txt,0.5,reports/multi_market/dax_stdout.txt,dax: console output of the seven-market backtest
+12_run_logs/nikkei225_stdout.txt,0.5,reports/multi_market/nikkei225_stdout.txt,nikkei225: console output of the seven-market backtest
+12_run_logs/hangseng_stdout.txt,0.5,reports/multi_market/hangseng_stdout.txt,hangseng: console output of the seven-market backtest
+12_run_logs/sensex_stdout.txt,0.5,reports/multi_market/sensex_stdout.txt,sensex: console output of the seven-market backtest
+12_run_logs/nifty50_stdout.txt,0.5,reports/multi_market/nifty50_stdout.txt,nifty50: console output of the seven-market backtest
+12_run_logs/AGGREGATE_stdout.txt,15.1,reports/multi_market/AGGREGATE_stdout.txt,Console output of the cross-market aggregation
+12_run_logs/DURATION_stdout.txt,11.9,reports/multi_market/DURATION_stdout.txt,Console output of the crisis-length study
+12_run_logs/TRANSITIONS_stdout.txt,5.6,reports/multi_market/TRANSITIONS_stdout.txt,Console output of the transition-matrix study
+12_run_logs/pytest_output.txt,3.1,reports/single_market/pytest_output.txt,Unit test run

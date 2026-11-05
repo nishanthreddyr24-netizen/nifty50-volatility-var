@@ -1,0 +1,248 @@
+{
+  "items": [
+    {
+      "item": "exp1/BASELINE_CONFIGURED_2008/GBM",
+      "status": "PASS",
+      "n_forecasts": 4163,
+      "first": "2010-01-20",
+      "last": "2026-10-30",
+      "violations": 18,
+      "source": "computed",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp1/BASELINE_CONFIGURED_2008/GARCH",
+      "status": "PASS",
+      "n_forecasts": 4163,
+      "first": "2010-01-20",
+      "last": "2026-10-30",
+      "violations": 69,
+      "source": "computed",
+      "refits": 199,
+      "errors": [],
+      "warnings": [
+        "17 GARCH fits with alpha+beta >= 0.999 (max 1.00000)"
+      ]
+    },
+    {
+      "item": "exp1/BASELINE_CONFIGURED_2008/Historical Simulation",
+      "status": "PASS",
+      "n_forecasts": 4163,
+      "first": "2010-01-20",
+      "last": "2026-10-30",
+      "violations": 43,
+      "source": "computed",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp1/EXTENDED_1990/GBM",
+      "status": "PASS",
+      "n_forecasts": 4163,
+      "first": "2010-01-20",
+      "last": "2026-10-30",
+      "violations": 15,
+      "source": "computed",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp1/EXTENDED_1990/GARCH",
+      "status": "PASS",
+      "n_forecasts": 4163,
+      "first": "2010-01-20",
+      "last": "2026-10-30",
+      "violations": 53,
+      "source": "computed",
+      "refits": 199,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp1/EXTENDED_1990/Historical Simulation",
+      "status": "PASS",
+      "n_forecasts": 4163,
+      "first": "2010-01-20",
+      "last": "2026-10-30",
+      "violations": 43,
+      "source": "computed",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/PRELAUNCH_1990/GBM",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 15,
+      "source": "reused",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/PRELAUNCH_1990/GARCH",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 49,
+      "source": "computed",
+      "refits": 182,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/PRELAUNCH_1990/Historical Simulation",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 43,
+      "source": "reused",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/LAUNCHED_1996/GBM",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 20,
+      "source": "computed",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/LAUNCHED_1996/GARCH",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 49,
+      "source": "computed",
+      "refits": 182,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/LAUNCHED_1996/Historical Simulation",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 43,
+      "source": "reused",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/FREEFLOAT_2009/GBM",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 43,
+      "source": "computed",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/FREEFLOAT_2009/GARCH",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 65,
+      "source": "computed",
+      "refits": 182,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "item": "exp2/FREEFLOAT_2009/Historical Simulation",
+      "status": "PASS",
+      "n_forecasts": 3802,
+      "first": "2011-06-28",
+      "last": "2026-10-30",
+      "violations": 43,
+      "source": "reused",
+      "refits": 0,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "cross_checks": [
+    [
+      "PASS",
+      "exp1/GBM: BASELINE_CONFIGURED_2008 vs EXTENDED_1990: dates, returns, training_end aligned"
+    ],
+    [
+      "PASS",
+      "exp1/GARCH: BASELINE_CONFIGURED_2008 vs EXTENDED_1990: dates, returns, training_end aligned"
+    ],
+    [
+      "PASS",
+      "exp1/Historical Simulation: BASELINE_CONFIGURED_2008 vs EXTENDED_1990: dates, returns, training_end aligned; HS identical"
+    ],
+    [
+      "PASS",
+      "exp2/GBM: PRELAUNCH_1990 vs LAUNCHED_1996: dates, returns, training_end aligned"
+    ],
+    [
+      "PASS",
+      "exp2/GBM: PRELAUNCH_1990 vs FREEFLOAT_2009: dates, returns, training_end aligned"
+    ],
+    [
+      "PASS",
+      "exp2/GARCH: PRELAUNCH_1990 vs LAUNCHED_1996: dates, returns, training_end aligned"
+    ],
+    [
+      "PASS",
+      "exp2/GARCH: PRELAUNCH_1990 vs FREEFLOAT_2009: dates, returns, training_end aligned"
+    ],
+    [
+      "PASS",
+      "exp2/Historical Simulation: PRELAUNCH_1990 vs LAUNCHED_1996: dates, returns, training_end aligned; HS identical"
+    ],
+    [
+      "PASS",
+      "exp2/Historical Simulation: PRELAUNCH_1990 vs FREEFLOAT_2009: dates, returns, training_end aligned; HS identical"
+    ],
+    [
+      "PASS",
+      "exp2/PRELAUNCH_1990/GBM equals exp1/EXTENDED_1990 on all exp2 dates: True"
+    ],
+    [
+      "PASS",
+      "exp2/PRELAUNCH_1990/Historical Simulation equals exp1/EXTENDED_1990 on all exp2 dates: True"
+    ],
+    [
+      "PASS",
+      "exp2/LAUNCHED_1996/Historical Simulation equals exp1/EXTENDED_1990 on all exp2 dates: True"
+    ],
+    [
+      "PASS",
+      "exp2/FREEFLOAT_2009/Historical Simulation equals exp1/EXTENDED_1990 on all exp2 dates: True"
+    ],
+    [
+      "PASS",
+      "exp1/GARCH: refit dates identical across variants: True"
+    ],
+    [
+      "PASS",
+      "exp2/GARCH: refit dates identical across variants: True"
+    ]
+  ]
+}

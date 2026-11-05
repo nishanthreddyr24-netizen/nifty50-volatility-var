@@ -1,0 +1,42 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.8, pytest-9.1.1, pluggy-1.7.0 -- D:\ASM_PROJECT\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\ASM_PROJECT
+plugins: anyio-4.15.1, platformdirs-4.13.5
+collecting ... collected 33 items
+
+tests/test_chapman_kolmogorov.py::test_true_markov_chain_passes_ck PASSED [  3%]
+tests/test_chapman_kolmogorov.py::test_ck_matrix_power_identity PASSED   [  6%]
+tests/test_chapman_kolmogorov.py::test_hmm_crash_prob_decays_to_base_rate PASSED [  9%]
+tests/test_exp_calendar.py::test_loader_parses_and_validates_close PASSED [ 12%]
+tests/test_exp_calendar.py::test_loader_rejects_duplicate_missing_non_numeric_and_non_positive PASSED [ 15%]
+tests/test_exp_calendar.py::test_variant_and_returns_alignment PASSED    [ 18%]
+tests/test_exp_calendar.py::test_regimes_and_independent_boundary_flags PASSED [ 21%]
+tests/test_exp_calendar.py::test_first_forecast_and_insufficient_history PASSED [ 24%]
+tests/test_exp_calendar.py::test_common_dates_previous_date_alignment_and_schedules PASSED [ 27%]
+tests/test_exp_calendar.py::test_experiment_common_starts_are_independent PASSED [ 30%]
+tests/test_exp_calendar.py::test_baseline_fallback_is_explicit PASSED    [ 33%]
+tests/test_exp_calendar.py::test_weekends_are_preserved PASSED           [ 36%]
+tests/test_exp_runner.py::test_no_lookahead_and_forecast_table_integrity PASSED [ 39%]
+tests/test_exp_runner.py::test_first_forecast_alignment PASSED           [ 42%]
+tests/test_exp_runner.py::test_fresh_factory_closures PASSED             [ 45%]
+tests/test_exp_runner.py::test_refit_schedule_is_anchored_and_repeatable PASSED [ 48%]
+tests/test_exp_runner.py::test_historical_simulation_window_and_identical_variants PASSED [ 51%]
+tests/test_exp_runner.py::test_harness_hit_flags_are_preserved PASSED    [ 54%]
+tests/test_exp_runner.py::test_output_safety PASSED                      [ 57%]
+tests/test_gbm.py::test_gbm_parameter_recovery PASSED                    [ 60%]
+tests/test_gbm.py::test_parametric_var_increases_with_confidence PASSED  [ 63%]
+tests/test_gbm.py::test_es_at_least_var PASSED                           [ 66%]
+tests/test_gbm.py::test_var_zero_mean_symmetric_distribution_matches_closed_form PASSED [ 69%]
+tests/test_gbm.py::test_rolling_backtest_harness_no_lookahead_and_runs PASSED [ 72%]
+tests/test_hmm_garch.py::test_equals_hmm_when_garch_is_lower PASSED      [ 75%]
+tests/test_hmm_garch.py::test_lifts_crisis_ceiling PASSED                [ 78%]
+tests/test_hmm_garch.py::test_calm_days_ignore_garch PASSED              [ 81%]
+tests/test_msgarch.py::test_hmm_is_special_case PASSED                   [ 84%]
+tests/test_msgarch.py::test_incremental_update_matches_full_refilter PASSED [ 87%]
+tests/test_msgarch.py::test_parameter_recovery PASSED                    [ 90%]
+tests/test_trading_applications.py::test_variance_swap_sign PASSED       [ 93%]
+tests/test_trading_applications.py::test_drawdowns PASSED                [ 96%]
+tests/test_trading_applications.py::test_bootstrap_detects_a_clear_sharpe_gain PASSED [100%]
+
+============================= 33 passed in 55.83s =============================

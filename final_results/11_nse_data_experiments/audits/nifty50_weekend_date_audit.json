@@ -1,0 +1,489 @@
+{
+  "summary": {
+    "generated_at_utc": "2026-11-01T15:15:29.612325+00:00",
+    "input_dataset": "data\\processed\\nifty50_nse_1990_2026.csv",
+    "input_manifest": "data\\processed\\nifty50_nse_manifest.json",
+    "yahoo_overlap_period_used": {
+      "first_date": "2007-09-17",
+      "last_date": "2026-10-30",
+      "basis": "Previously established exact-date NSE/Yahoo cross-validation period"
+    },
+    "weekend_observation_count": 46,
+    "saturday_count": 36,
+    "sunday_count": 10,
+    "verified_count": 0,
+    "unverified_count": 36,
+    "suspicious_count": 10,
+    "weekend_observations_within_yahoo_overlap_period": 20,
+    "weekend_observations_outside_yahoo_overlap_period": 26,
+    "classification_policy": {
+      "verified": "Used only when independent supporting evidence is available; none was available.",
+      "unverified": "Saturday observation retained as a candidate session without asserting historical or official status.",
+      "suspicious": "Sunday observation flagged for review because no supporting session evidence was available; not removed or corrected."
+    },
+    "source_manifest_weekend_count": 46,
+    "source_data_modified": false
+  },
+  "observations": [
+    {
+      "Date": "1991-10-26",
+      "Day_of_Week": "Saturday",
+      "Year": 1991,
+      "NIFTY_50_Close": 532.87,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1992-02-29",
+      "Day_of_Week": "Saturday",
+      "Year": 1992,
+      "NIFTY_50_Close": 889.3,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1992-10-25",
+      "Day_of_Week": "Sunday",
+      "Year": 1992,
+      "NIFTY_50_Close": 854.45,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1993-02-27",
+      "Day_of_Week": "Saturday",
+      "Year": 1993,
+      "NIFTY_50_Close": 774.18,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1995-01-01",
+      "Day_of_Week": "Sunday",
+      "Year": 1995,
+      "NIFTY_50_Close": 1182.2,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1996-11-10",
+      "Day_of_Week": "Sunday",
+      "Year": 1996,
+      "NIFTY_50_Close": 880.36,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1997-03-01",
+      "Day_of_Week": "Saturday",
+      "Year": 1997,
+      "NIFTY_50_Close": 1102.95,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1997-04-12",
+      "Day_of_Week": "Saturday",
+      "Year": 1997,
+      "NIFTY_50_Close": 1003.25,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1998-10-31",
+      "Day_of_Week": "Saturday",
+      "Year": 1998,
+      "NIFTY_50_Close": 824.0,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1998-11-21",
+      "Day_of_Week": "Saturday",
+      "Year": 1998,
+      "NIFTY_50_Close": 857.4,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1998-11-28",
+      "Day_of_Week": "Saturday",
+      "Year": 1998,
+      "NIFTY_50_Close": 810.85,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1999-02-27",
+      "Day_of_Week": "Saturday",
+      "Year": 1999,
+      "NIFTY_50_Close": 981.3,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1999-03-20",
+      "Day_of_Week": "Saturday",
+      "Year": 1999,
+      "NIFTY_50_Close": 1060.35,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1999-04-17",
+      "Day_of_Week": "Saturday",
+      "Year": 1999,
+      "NIFTY_50_Close": 966.95,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1999-10-23",
+      "Day_of_Week": "Saturday",
+      "Year": 1999,
+      "NIFTY_50_Close": 1449.8,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "1999-11-07",
+      "Day_of_Week": "Sunday",
+      "Year": 1999,
+      "NIFTY_50_Close": 1369.6,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2003-03-22",
+      "Day_of_Week": "Saturday",
+      "Year": 2003,
+      "NIFTY_50_Close": 1037.15,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2003-10-25",
+      "Day_of_Week": "Saturday",
+      "Year": 2003,
+      "NIFTY_50_Close": 1521.95,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2003-11-15",
+      "Day_of_Week": "Saturday",
+      "Year": 2003,
+      "NIFTY_50_Close": 1562.8,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2004-04-17",
+      "Day_of_Week": "Saturday",
+      "Year": 2004,
+      "NIFTY_50_Close": 1868.1,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2004-10-09",
+      "Day_of_Week": "Saturday",
+      "Year": 2004,
+      "NIFTY_50_Close": 1817.8,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2005-06-04",
+      "Day_of_Week": "Saturday",
+      "Year": 2005,
+      "NIFTY_50_Close": 2092.35,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2005-11-26",
+      "Day_of_Week": "Saturday",
+      "Year": 2005,
+      "NIFTY_50_Close": 2683.45,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2006-04-29",
+      "Day_of_Week": "Saturday",
+      "Year": 2006,
+      "NIFTY_50_Close": 3557.6,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2006-06-25",
+      "Day_of_Week": "Sunday",
+      "Year": 2006,
+      "NIFTY_50_Close": 3050.3,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2006-10-21",
+      "Day_of_Week": "Saturday",
+      "Year": 2006,
+      "NIFTY_50_Close": 3683.5,
+      "Within_Yahoo_Overlap_Period": false,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2009-10-17",
+      "Day_of_Week": "Saturday",
+      "Year": 2009,
+      "NIFTY_50_Close": 5141.8,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2010-02-06",
+      "Day_of_Week": "Saturday",
+      "Year": 2010,
+      "NIFTY_50_Close": 4757.25,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2012-01-07",
+      "Day_of_Week": "Saturday",
+      "Year": 2012,
+      "NIFTY_50_Close": 4746.9,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2012-03-03",
+      "Day_of_Week": "Saturday",
+      "Year": 2012,
+      "NIFTY_50_Close": 5359.4,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2012-04-28",
+      "Day_of_Week": "Saturday",
+      "Year": 2012,
+      "NIFTY_50_Close": 5209.0,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2012-09-08",
+      "Day_of_Week": "Saturday",
+      "Year": 2012,
+      "NIFTY_50_Close": 5358.7,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2013-05-11",
+      "Day_of_Week": "Saturday",
+      "Year": 2013,
+      "NIFTY_50_Close": 6107.25,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2013-11-03",
+      "Day_of_Week": "Sunday",
+      "Year": 2013,
+      "NIFTY_50_Close": 6317.35,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2014-03-22",
+      "Day_of_Week": "Saturday",
+      "Year": 2014,
+      "NIFTY_50_Close": 6494.9,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2015-02-28",
+      "Day_of_Week": "Saturday",
+      "Year": 2015,
+      "NIFTY_50_Close": 8901.85,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2016-10-30",
+      "Day_of_Week": "Sunday",
+      "Year": 2016,
+      "NIFTY_50_Close": 8625.7,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2019-10-27",
+      "Day_of_Week": "Sunday",
+      "Year": 2019,
+      "NIFTY_50_Close": 11627.15,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2020-02-01",
+      "Day_of_Week": "Saturday",
+      "Year": 2020,
+      "NIFTY_50_Close": 11661.85,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2020-11-14",
+      "Day_of_Week": "Saturday",
+      "Year": 2020,
+      "NIFTY_50_Close": 12780.25,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2023-11-12",
+      "Day_of_Week": "Sunday",
+      "Year": 2023,
+      "NIFTY_50_Close": 19525.55,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2024-01-20",
+      "Day_of_Week": "Saturday",
+      "Year": 2024,
+      "NIFTY_50_Close": 21571.8,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2024-03-02",
+      "Day_of_Week": "Saturday",
+      "Year": 2024,
+      "NIFTY_50_Close": 22378.4,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2024-05-18",
+      "Day_of_Week": "Saturday",
+      "Year": 2024,
+      "NIFTY_50_Close": 22502.0,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2025-02-01",
+      "Day_of_Week": "Saturday",
+      "Year": 2025,
+      "NIFTY_50_Close": 23482.15,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "unverified",
+      "Session_Type": "Saturday observation; historical or special session not established",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    },
+    {
+      "Date": "2026-02-01",
+      "Day_of_Week": "Sunday",
+      "Year": 2026,
+      "NIFTY_50_Close": 24825.45,
+      "Within_Yahoo_Overlap_Period": true,
+      "Status": "suspicious",
+      "Session_Type": "Sunday observation; unusual date requiring review",
+      "Supporting_Evidence": "No independent session evidence in the inspected dataset or manifest"
+    }
+  ]
+}

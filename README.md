@@ -5,6 +5,10 @@ but risk is predictable, so we model risk — using regime-switching (HMM) and
 GARCH-family models against a GBM baseline, scored on out-of-sample VaR
 backtests (Kupiec, Christoffersen, Basel traffic light).
 
+> **All results are in [`final_results/`](final_results/)**: every number and figure from every
+> study, ordered 01-12, with a detailed [README](final_results/README.md) and a master
+> pass/fail scorecard. Nothing needs to be rerun to read them.
+
 ## Setup
 
 ```
@@ -37,6 +41,12 @@ newer Python versions.)
   recessions and documented event dates
 - `src/crisis_duration.py` — crisis length: HMM / MS-GARCH episodes vs actual bear markets
 - `src/regime_transitions.py` — fitted and empirical regime transition matrices
+- `src/chapman_kolmogorov.py` — Chapman-Kolmogorov check (n-step model vs data,
+  horizons 1-40) on crash days (Poisson vs observed Markov chain vs HMM) and on
+  the HMM regime flags, with block-bootstrap bands
+- `src/trading_applications.py` — trading test: selling one-month variance at VIX / India VIX,
+  and volatility targeting, using the out-of-sample forecasts
+- `src/collect_results.py` — copies every result into `final_results/`
 - `src/make_multi_market_figures.py` — figures in `reports/multi_market/figures/`
 - `reports/multi_market/` — seven-market results (CSVs, logs, figures, `FINDINGS.md`)
 - `reports/figures/` — output figures
