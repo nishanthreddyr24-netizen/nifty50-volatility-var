@@ -95,6 +95,8 @@ PLAN: list[tuple[str, list[tuple[Path, str]]]] = [
         (ROOT / "results" / "validation_exp1_exp2.json", "Validation status of every Exp 1 / Exp 2 run"),
         (ROOT / "results" / "exp1", "Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"),
         (ROOT / "results" / "exp2", "Exp 2: 1990 / 1996 / 2009 training start, paired McNemar comparisons"),
+        (ROOT / "results" / "pilot_exp1", "Pilot run of Exp 1 (GBM, historical simulation)"),
+        (REP / "figures" / "exp1_exp2", "Exp 1 / Exp 2 figures (VaR timelines, exception rates, loss heatmaps, bootstrap intervals) and visualization_metrics.csv"),
         (REP / "audits", "NSE vs Yahoo data audits, weekend-date audit, calendar preflight"),
         (REP / "reproducibility", "Loss comparison between Exp 1 and Exp 2"),
     ]),

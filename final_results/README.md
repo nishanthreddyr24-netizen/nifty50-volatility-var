@@ -33,7 +33,7 @@ file with its size, original path and a one-line description.
 | [`11_nse_data_experiments/`](11_nse_data_experiments/) | Official NSE NIFTY data back to 1990; data audits | `exp1/`, `exp2/`, `audits/` |
 | [`12_run_logs/`](12_run_logs/) | Console output and logs of every run, unit tests | `*_log.txt`, `pytest_output.txt` |
 
-The [master scorecard](#master-scorecard) at the end lists all 43 studies with a pass/fail verdict.
+The [master scorecard](#master-scorecard) at the end lists all 45 studies with a pass/fail verdict.
 
 ---
 
@@ -655,6 +655,7 @@ training-start dates on a common evaluation window. Every run's validation statu
 | Exp 1 (2010-01-20 to 2026-10-30) | 2008 | GBM | 4,163 | 18 | 0.43% | 3.3e-5 | 0.69 | Fail |
 | | 2008 | GARCH | 4,163 | 69 | 1.66% | 9.8e-5 | 0.89 | Fail |
 | | 2008 | Historical simulation | 4,163 | 43 | 1.03% | 0.83 | 0.082 | Pass |
+| | 2008 | HMM 2-state | 4,163 | 40 | 0.96% | 0.80 | 0.38 | **Pass** |
 | | 1990 | GBM | 4,163 | 15 | 0.36% | 1.8e-6 | 0.74 | Fail |
 | | 1990 | GARCH | 4,163 | 53 | 1.27% | 0.089 | 0.24 | **Pass** |
 | | 1990 | Historical simulation | 4,163 | 43 | 1.03% | 0.83 | 0.082 | Pass |
@@ -672,16 +673,20 @@ training-start dates on a common evaluation window. Every run's validation statu
   passes. The difference is significant (McNemar exact p = 3.1e-5: 16 extra violations, all one-sided).
 - Historical simulation does not depend on the start date (500-day window).
 - Exp 1 GARCH: 17 of 199 refits had persistence alpha + beta >= 0.999 (warning, not an error).
-- The NSE-based GBM count (18) reproduces the Yahoo-based study exactly.
+- The NSE-based GBM count (18) reproduces the Yahoo-based study exactly, and the NSE-based HMM
+  (40 violations, 0.96%) confirms the Yahoo result (38, 0.92%): the HMM passes on both data sources.
+- Figures for both experiments (VaR timelines, rolling and annual exception rates, loss heatmaps,
+  bootstrap loss intervals) are in `exp1_exp2/`, with their numbers in `visualization_metrics.csv`.
+  `pilot_exp1/` holds the pilot run.
 
 ---
 
 ## 12. Run logs and tests
 
 `12_run_logs/` holds the run log and console output of every market, the aggregation,
-crisis-length and transition studies, and `pytest_output.txt`: **33 of 33 unit tests pass**
+crisis-length and transition studies, and `pytest_output.txt`: **40 of 40 unit tests pass**
 (parameter recovery, backtest harness, MS-GARCH, HMM-gated GARCH, NSE experiment calendar and
-runner, Chapman-Kolmogorov, trading-test building blocks).
+runner, extended data loaders, Chapman-Kolmogorov, trading-test building blocks).
 
 ---
 
@@ -702,7 +707,7 @@ runner, Chapman-Kolmogorov, trading-test building blocks).
 | 11 | Crash days are Poisson | Dispersion test | Index 17.6, p = 0 | Rejected (intended) |
 | 12 | Hawkes beats Poisson | Likelihood ratio | LR = 160, branching 0.76 | Pass |
 | 13 | HMM estimates unbiased | 50-sample parameter recovery | 3 of 4 within 1 std; calm vol +2% | Pass (caveat) |
-| 14 | Unit tests | pytest | 33 of 33 | Pass |
+| 14 | Unit tests | pytest | 40 of 40 | Pass |
 | 15 | Correct 1% coverage, 7 markets | Kupiec + Christoffersen | Best: HMM 2 of 7; none on 1990-start markets | Fail |
 | 16 | Fewest violations | Count per market | HMM-gated GARCH in 6 of 7 | Pass |
 | 17 | Gated beats HMM | Diebold-Mariano | Better in 6 of 7, significant in 3 | Partial |
@@ -733,8 +738,9 @@ runner, Chapman-Kolmogorov, trading-test building blocks).
 | 42 | Options: model filter improves selling volatility (S&P 500) | Drawdown, worst month, Sharpe | GFC +24 vs -72, but no filter avoids March 2020 (-91.9) | Fail |
 | 43 | Volatility targeting with gated VaR, 7 markets | Budget, drawdown, Sharpe | Passes in 2 of 7; GFC loss cut 54-70% everywhere | Partial |
 | 44 | Leverage effect (NIFTY) | Corr(return, next-day vol change) | -0.014 | Not found |
+| 45 | NSE data: HMM 2-state, 2008 start | Kupiec + Christoffersen | 0.96%, p = 0.80 / 0.38 | Pass |
 
-**Totals (44 studies): 25 pass, 4 partial, 10 fail or not found, 5 rejected hypotheses where
+**Totals (45 studies): 26 pass, 4 partial, 10 fail or not found, 5 rejected hypotheses where
 rejection is the intended finding.**
 
 ---
