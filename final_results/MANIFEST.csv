@@ -1,4 +1,15 @@
 file,size_kb,source,description
+00_input_data/sp500_1990.csv,830.4,data/raw/sp500_1990.csv,"S&P 500 (^GSPC) daily OHLCV, 1990-2026 (Yahoo Finance)"
+00_input_data/ftse100_1990.csv,721.6,data/raw/ftse100_1990.csv,"FTSE 100 (^FTSE) daily OHLCV, 1990-2026 (Yahoo Finance)"
+00_input_data/dax_1990.csv,762.1,data/raw/dax_1990.csv,"DAX (^GDAXI) daily OHLCV, 1990-2026 (Yahoo Finance)"
+00_input_data/nikkei225_1990.csv,700.5,data/raw/nikkei225_1990.csv,"Nikkei 225 (^N225) daily OHLCV, 1990-2026 (Yahoo Finance)"
+00_input_data/hangseng_1990.csv,697.8,data/raw/hangseng_1990.csv,"Hang Seng (^HSI) daily OHLCV, 1990-2026 (Yahoo Finance)"
+00_input_data/sensex_1997.csv,543.8,data/raw/sensex_1997.csv,"Sensex (^BSESN) daily OHLCV, 1997-2026 (Yahoo Finance)"
+00_input_data/nifty50.csv,341.4,data/raw/nifty50.csv,"NIFTY 50 (^NSEI) daily OHLCV, 2008-2026 (Yahoo Finance)"
+00_input_data/sp500.csv,418.2,data/raw/sp500.csv,"S&P 500 (^GSPC) daily OHLCV, 2008-2026 (Yahoo Finance; single-market study)"
+00_input_data/vix_1990.csv,783.9,data/raw/vix_1990.csv,"CBOE VIX (^VIX) daily, 1990-2026 (Yahoo Finance)"
+00_input_data/india_vix.csv,386.4,data/raw/india_vix.csv,"India VIX (^INDIAVIX) daily, 2008-2026 (Yahoo Finance)"
+00_input_data/nifty50_nse_1990_2026.csv,424.7,data/processed/nifty50_nse_1990_2026.csv,"NIFTY 50 from official NSE data, 1990-2026 (teammate's series, audited against Yahoo)"
 01_stylized_facts/stylized_facts_output.txt,0.9,reports/single_market/stylized_facts_output.txt,"NIFTY 50 summary stats, Jarque-Bera, Ljung-Box, VIX and leverage correlations"
 01_stylized_facts/01_price_and_returns.png,104.8,reports/figures/01_price_and_returns.png,NIFTY 50 price and daily log returns
 01_stylized_facts/02_fat_tails.png,52.9,reports/figures/02_fat_tails.png,"Return histogram vs normal, QQ plot"

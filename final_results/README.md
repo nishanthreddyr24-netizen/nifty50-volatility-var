@@ -14,12 +14,46 @@ Everything in this folder was copied from the scripts' own output files by
 `python -m src.collect_results`. Nothing here needs to be rerun. `MANIFEST.csv` lists every
 file with its size, original path and a one-line description.
 
+### Use the data straight away
+
+All 88 CSVs (11 input price series and 77 result tables) can be loaded straight from GitHub, with no
+clone and no rerun. **[`CSV_INDEX.md`](CSV_INDEX.md)** gives a direct-download link and a row count
+for every one.
+
+```python
+import pandas as pd
+BASE = "https://raw.githubusercontent.com/nishanthreddyr24-netizen/nifty50-volatility-var/master/final_results/"
+
+backtest = pd.read_csv(BASE + "05_seven_market_var_backtest/ALL_backtest.csv")            # every market x model
+var_paths = pd.read_csv(BASE + "05_seven_market_var_backtest/sp500_var_paths.csv",
+                        index_col=0, parse_dates=True)                                   # daily VaR and hits
+regimes = pd.read_csv(BASE + "07_regimes_and_transitions/sp500_regime_flags.csv",
+                      index_col=0, parse_dates=True)                                     # daily P(crisis)
+prices = pd.read_csv(BASE + "00_input_data/sp500_1990.csv", index_col=0, parse_dates=True)  # raw input
+```
+
+Most-used files:
+
+| What | File |
+|---|---|
+| Every backtest result (violations, Kupiec, Christoffersen, Basel, sub-periods) | [`05_seven_market_var_backtest/ALL_backtest.csv`](05_seven_market_var_backtest/ALL_backtest.csv) |
+| Daily VaR forecast and hit for every model | `05_seven_market_var_backtest/<market>_var_paths.csv` |
+| Forecast skill and Diebold-Mariano | [`06_forecast_skill_and_runtime/ALL_forecast_skill.csv`](06_forecast_skill_and_runtime/ALL_forecast_skill.csv) |
+| Daily crisis probability and regime flags | `07_regimes_and_transitions/<market>_regime_flags.csv` |
+| Transition matrices | [`07_regimes_and_transitions/ALL_transition_matrices.csv`](07_regimes_and_transitions/ALL_transition_matrices.csv) |
+| Chapman-Kolmogorov summary | [`08_chapman_kolmogorov/CK_summary.csv`](08_chapman_kolmogorov/CK_summary.csv) |
+| Every options trade | [`10_trading_applications/TRADE_vrp_trades.csv`](10_trading_applications/TRADE_vrp_trades.csv) |
+| Volatility-targeting results | [`10_trading_applications/TRADE_voltarget_summary.csv`](10_trading_applications/TRADE_voltarget_summary.csv) |
+
+`<market>` is one of `sp500`, `ftse100`, `dax`, `nikkei225`, `hangseng`, `sensex`, `nifty50`.
+
 ---
 
 ## Contents
 
 | Folder | Study | Key files |
 |---|---|---|
+| [`00_input_data/`](00_input_data/) | Daily prices of all 7 indices, VIX, India VIX, and NSE NIFTY 1990-2026 | 11 CSVs |
 | [`01_stylized_facts/`](01_stylized_facts/) | Fat tails, volatility clustering, India VIX check | `stylized_facts_output.txt`, 5 figures |
 | [`02_nifty_model_comparison/`](02_nifty_model_comparison/) | Six VaR models on NIFTY 50 | `model_comparison_output.txt`, `nifty50_var_paths.csv` |
 | [`03_extreme_events_poisson_hawkes/`](03_extreme_events_poisson_hawkes/) | Are crash days Poisson? Hawkes fit | `extremes_output.txt` |
@@ -49,7 +83,8 @@ The [master scorecard](#master-scorecard) at the end lists all 45 studies with a
 | Sensex | ^BSESN | 1997-07 | 1999-07 | 6,728 |
 | NIFTY 50 | ^NSEI | 2008 | 2010-01 | 4,113 |
 
-- Source: Yahoo Finance daily closes (raw downloads are not committed; `data/raw/` is gitignored).
+- Source: Yahoo Finance daily OHLCV, saved in `00_input_data/` exactly as downloaded (Close is
+  used). NSE NIFTY series: `00_input_data/nifty50_nse_1990_2026.csv`.
   Implied volatility: CBOE VIX (^VIX, from 1990) and India VIX (^INDIAVIX, from 2008).
 - Returns are daily log returns. **VaR** is the one-day 99% VaR, a positive loss fraction:
   the loss that should be exceeded on 1% of days. A **violation** (hit) is a day with return < -VaR.
