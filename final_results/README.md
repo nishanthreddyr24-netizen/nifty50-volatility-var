@@ -146,7 +146,7 @@ Full-sample HMM on NIFTY (`hmm_regime_output.txt`, from `python -m src.hmm`):
 | Check | Result | Verdict |
 |---|---|---|
 | Regimes (2-state) | Calm: +14.1% a year, 13.4% vol; crisis: -26.9% a year, 40.0% vol | Two clear regimes |
-| 2 vs 3 states | AIC: -29,034 (2) vs -29,043 (3); BIC: -28,989 (2) vs -28,953 (3) | BIC prefers 2, AIC prefers 3 |
+| 2 vs 3 states, chosen by BIC (lower is better) | BIC -28,989 with 2 states (7 parameters) vs -28,953 with 3 (14 parameters); log-likelihood 14,524.0 vs 14,535.4 | **BIC prefers 2 states** |
 | 3-state transition matrix | P(0->1) = 0.635, P(1->0) = 0.996: states 0 and 1 swap almost every day; mean India VIX in both is 16.7 | 3rd state is not a real regime; **2 states kept** |
 | Crisis regime vs India VIX | Mean India VIX 34.0 in the crisis state vs 16.7 in the others | Pass |
 | Crisis regime covers 2008 GFC | 100% of days | Pass |

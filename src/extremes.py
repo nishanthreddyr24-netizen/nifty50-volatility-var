@@ -110,7 +110,7 @@ def fit_hawkes(event_days: np.ndarray, T: float) -> HawkesFit:
 
 def poisson_log_likelihood(event_days: np.ndarray, T: float) -> float:
     """Log-likelihood of a homogeneous Poisson process with MLE rate n/T,
-    for a fair AIC/BIC comparison against the Hawkes fit."""
+    for a fair likelihood comparison against the Hawkes fit."""
     n = len(event_days)
     rate = n / T
     return n * np.log(rate) - rate * T

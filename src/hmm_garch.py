@@ -16,7 +16,7 @@ The HMM decides *when* the market is in its crisis regime; GARCH decides
 
 Unlike msgarch.py this is not a single likelihood model -- the gate is a
 rule on top of two separately estimated models -- so it can be judged by
-backtests but not by AIC/BIC. Neither underlying module is modified; this
+backtests but not by BIC. Neither underlying module is modified; this
 file only calls their public fitting/filtering functions.
 """
 

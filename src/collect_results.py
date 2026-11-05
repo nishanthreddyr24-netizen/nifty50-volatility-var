@@ -35,7 +35,7 @@ PLAN: list[tuple[str, list[tuple[Path, str]]]] = [
     ]),
     ("02_nifty_model_comparison", [
         (SM / "model_comparison_output.txt", "Six-model VaR backtest on NIFTY 50 (Kupiec, Christoffersen, Basel, COVID window, regimes)"),
-        (SM / "hmm_regime_output.txt", "Full-sample HMM: regimes, 2 vs 3 states (AIC/BIC), India VIX and crisis-window checks, mixture VaR"),
+        (SM / "hmm_regime_output.txt", "Full-sample HMM: regimes, 2 vs 3 states (BIC), India VIX and crisis-window checks, mixture VaR"),
         (MM / "nifty50_backtest.csv", "NIFTY 50 backtest table per model (seven-market run, identical numbers)"),
         (MM / "nifty50_var_paths.csv", "NIFTY 50 daily return, VaR and hit for every model"),
     ]),

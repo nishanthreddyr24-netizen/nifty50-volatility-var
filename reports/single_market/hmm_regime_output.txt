@@ -1,6 +1,6 @@
-=== Model selection: 2 vs 3 states (full sample) ===
-n_states=2: logL=14524.0  AIC=-29034.1  BIC=-28989.0
-n_states=3: logL=14535.4  AIC=-29042.8  BIC=-28952.7
+=== Model selection by BIC: 2 vs 3 states (full sample) ===
+n_states=2: logL=14524.0  parameters=7  BIC=-28989.0
+n_states=3: logL=14535.4  parameters=14  BIC=-28952.7
 
 === Fitted 3-state HMM (full sample) ===
   regime 0: mu_annual=+17.34%  sigma_annual=11.87%

@@ -6,7 +6,7 @@ file,size_kb,source,description
 01_stylized_facts/04_vol_vs_vix.png,111.9,reports/figures/04_vol_vs_vix.png,21-day realised vol vs India VIX
 01_stylized_facts/05_crisis_windows.png,82.6,reports/figures/05_crisis_windows.png,2008 GFC and 2020 COVID windows
 02_nifty_model_comparison/model_comparison_output.txt,2.1,reports/single_market/model_comparison_output.txt,"Six-model VaR backtest on NIFTY 50 (Kupiec, Christoffersen, Basel, COVID window, regimes)"
-02_nifty_model_comparison/hmm_regime_output.txt,1.8,reports/single_market/hmm_regime_output.txt,"Full-sample HMM: regimes, 2 vs 3 states (AIC/BIC), India VIX and crisis-window checks, mixture VaR"
+02_nifty_model_comparison/hmm_regime_output.txt,1.8,reports/single_market/hmm_regime_output.txt,"Full-sample HMM: regimes, 2 vs 3 states (BIC), India VIX and crisis-window checks, mixture VaR"
 02_nifty_model_comparison/nifty50_backtest.csv,1.5,reports/multi_market/nifty50_backtest.csv,"NIFTY 50 backtest table per model (seven-market run, identical numbers)"
 02_nifty_model_comparison/nifty50_var_paths.csv,678.5,reports/multi_market/nifty50_var_paths.csv,"NIFTY 50 daily return, VaR and hit for every model"
 03_extreme_events_poisson_hawkes/extremes_output.txt,1.0,reports/single_market/extremes_output.txt,"Crash days per year, Poisson dispersion test, Hawkes fit and LR test"

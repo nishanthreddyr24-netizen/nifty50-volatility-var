@@ -77,13 +77,13 @@ def n_free_params(n_states: int) -> int:
     return (n_states - 1) + n_states * (n_states - 1) + n_states + n_states
 
 
-def aic_bic(fit: HMMFit, returns: pd.Series) -> dict:
+def bic(fit: HMMFit, returns: pd.Series) -> dict:
+    """Bayesian information criterion, BIC = -2 logL + k ln(n); lower is better.
+    BIC is the criterion used to choose the number of regimes."""
     log_l = fit.model.score(returns.to_numpy().reshape(-1, 1))
     k = n_free_params(len(fit.means))
     n = len(returns)
-    aic = -2 * log_l + 2 * k
-    bic = -2 * log_l + k * np.log(n)
-    return {"log_likelihood": log_l, "n_params": k, "AIC": aic, "BIC": bic}
+    return {"log_likelihood": log_l, "n_params": k, "BIC": -2 * log_l + k * np.log(n)}
 
 
 def viterbi_regimes(fit: HMMFit, returns: pd.Series) -> pd.Series:
@@ -209,11 +209,11 @@ if __name__ == "__main__":
     returns = log_returns(prices)
     vix = load_close("india_vix")
 
-    print("=== Model selection: 2 vs 3 states (full sample) ===")
+    print("=== Model selection by BIC: 2 vs 3 states (full sample) ===")
     for k in (2, 3):
         fit_k = fit_gaussian_hmm(returns, n_states=k)
-        ic = aic_bic(fit_k, returns)
-        print(f"n_states={k}: logL={ic['log_likelihood']:.1f}  AIC={ic['AIC']:.1f}  BIC={ic['BIC']:.1f}")
+        ic = bic(fit_k, returns)
+        print(f"n_states={k}: logL={ic['log_likelihood']:.1f}  parameters={ic['n_params']}  BIC={ic['BIC']:.1f}")
 
     n_states = 3
     fit = fit_gaussian_hmm(returns, n_states=n_states)
