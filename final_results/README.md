@@ -70,6 +70,7 @@ Most-used files:
 | [`11_nse_data_experiments/`](11_nse_data_experiments/) | Official NSE NIFTY data back to 1990; data audits | `exp1/`, `exp2/`, `audits/` |
 | [`12_run_logs/`](12_run_logs/) | Console output and logs of every run, unit tests | `*_log.txt`, `pytest_output.txt` |
 | [`13_report_figures/`](13_report_figures/) | Every figure for the report and slides (300 dpi), theory-vs-simulation numbers | `RF01`-`RF13`, `report_numbers.json` |
+| [`14_simulations/`](14_simulations/) | Every simulation: Markov chain, Poisson vs Hawkes, sample paths, parameter recovery, with simulated data and theory comparisons | [`14_simulations/README.md`](14_simulations/README.md) |
 
 The [master scorecard](#master-scorecard) at the end lists all 50 studies with a pass/fail verdict.
 

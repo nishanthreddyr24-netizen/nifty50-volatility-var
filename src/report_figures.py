@@ -10,7 +10,9 @@ convergence, and the NIFTY COVID VaR paths.
 All on NIFTY 50 (2008-2026), the project's main market.
 
 Usage:  python -m src.report_figures
-Output: reports/report_figures/RF*.png, report_numbers.json, simulation_stats.csv
+Output: reports/report_figures/RF*.png, report_numbers.json, simulation_stats.csv;
+        simulated data in reports/simulations/{markov_chain, poisson_hawkes,
+        return_paths, parameter_recovery}/
 """
 
 from __future__ import annotations
@@ -42,6 +44,9 @@ from src.returns import log_returns
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "reports" / "report_figures"
 OUT.mkdir(parents=True, exist_ok=True)
+SIM = ROOT / "reports" / "simulations"          # simulated data, one sub-folder per simulation study
+for _d in ("markov_chain", "poisson_hawkes", "return_paths", "parameter_recovery"):
+    (SIM / _d).mkdir(parents=True, exist_ok=True)
 DPI = 300
 CALM, CRISIS, GREY, ORANGE, PURPLE, INK = "#1b6ca8", "#c0392b", "#8c8c8c", "#d95f02", "#7570b3", "#222222"
 plt.rcParams.update({"font.size": 10, "axes.titlesize": 11, "axes.labelsize": 10, "legend.fontsize": 9,
@@ -63,97 +68,10 @@ def save(fig, name):
     print("wrote", name, flush=True)
 
 
-# ---------------------------------------------------------------- theory helpers
-
-def nstep_closed_form(a: float, b: float, n: np.ndarray) -> np.ndarray:
-    """2-state chain, a = P(calm->crisis), b = P(crisis->calm). Returns P^n as (len(n), 2, 2):
-    P^n = 1/(a+b) [[b, a], [b, a]] + (1-a-b)^n/(a+b) [[a, -a], [-b, b]]."""
-    lam = (1 - a - b) ** n
-    base = np.array([[b, a], [b, a]]) / (a + b)
-    dev = np.array([[a, -a], [-b, b]]) / (a + b)
-    return base[None] + lam[:, None, None] * dev[None]
-
-
-def mixture_moments(pi, mu, sd):
-    m = np.sum(pi * mu)
-    var = np.sum(pi * (sd**2 + mu**2)) - m**2
-    m4 = np.sum(pi * ((mu - m) ** 4 + 6 * (mu - m) ** 2 * sd**2 + 3 * sd**4))
-    m3 = np.sum(pi * ((mu - m) ** 3 + 3 * (mu - m) * sd**2))
-    return m, var, m3 / var**1.5, m4 / var**2 - 3
-
-
-def hmm_acf_sq_theory(pi, mu, sd, lam, lags):
-    """Exact ACF of r_t^2 for a stationary 2-state Gaussian HMM:
-    Corr(r_t^2, r_{t+k}^2) = Var_pi(g(S)) lam^k / Var(r^2), g(i) = mu_i^2 + sd_i^2."""
-    g = mu**2 + sd**2
-    e4 = mu**4 + 6 * mu**2 * sd**2 + 3 * sd**4
-    var_g = np.sum(pi * g**2) - np.sum(pi * g) ** 2
-    var_r2 = np.sum(pi * e4) - np.sum(pi * g) ** 2
-    return var_g * lam ** np.asarray(lags) / var_r2
-
-
-def acf(x, lags):
-    x = np.asarray(x) - np.mean(x)
-    d = np.dot(x, x)
-    return np.array([np.dot(x[:-k], x[k:]) / d for k in lags])
-
-
-def spells(flag: np.ndarray, value: int) -> np.ndarray:
-    out, run = [], 0
-    for f in flag:
-        if f == value:
-            run += 1
-        elif run:
-            out.append(run)
-            run = 0
-    if run:
-        out.append(run)
-    return np.array(out)
-
-
-def simulate_chain(P, n, s0, rng):
-    s = np.empty(n, dtype=int)
-    s[0] = s0
-    u = rng.random(n)
-    for t in range(1, n):
-        s[t] = int(u[t] < P[s[t - 1], 1])
-    return s
-
-
-def simulate_hmm(P, mu, sd, pi, n, rng):
-    s = simulate_chain(P, n, int(rng.random() < pi[1]), rng)
-    return rng.normal(mu[s], sd[s]), s
-
-
-def simulate_garch(g, n, rng):
-    r = np.empty(n)
-    s2 = g.omega / (1 - g.alpha - g.beta)
-    eps_prev = 0.0
-    for t in range(n):
-        s2 = g.omega + g.alpha * eps_prev**2 + g.beta * s2
-        eps_prev = np.sqrt(s2) * rng.standard_normal()
-        r[t] = g.mu + eps_prev
-    return r
-
-
-def simulate_hawkes(mu, alpha, beta, T, rng):
-    """Ogata thinning for an exponential-kernel Hawkes process on [0, T]."""
-    t, events, excite = 0.0, [], 0.0   # excite = sum alpha*exp(-beta(t - t_i)) at time t
-    while True:
-        lam_bar = mu + excite
-        w = rng.exponential(1 / lam_bar)
-        t += w
-        if t > T:
-            break
-        excite *= np.exp(-beta * w)
-        if rng.random() * lam_bar <= mu + excite:
-            events.append(t)
-            excite += alpha
-    return np.array(events)
-
-
-def dispersion(counts):
-    return counts.var(ddof=1) / counts.mean() if counts.mean() > 0 else np.nan
+# Simulators and theory formulas live in src/simulators.py.
+from src.simulators import (acf, dispersion, hmm_acf_sq_theory, mixture_moments,  # noqa: E402
+                            nstep_closed_form, simulate_chain, simulate_garch,
+                            simulate_hawkes, simulate_hmm, spells)
 
 
 # ---------------------------------------------------------------- figures
@@ -261,10 +179,16 @@ def fig_transition_nstep(P, pi, rng):
     NUM["nstep_theory"] = {f"P_crisis_crisis_n{k}": float(Pn[k, 1, 1]) for k in (1, 5, 10, 20, 50, 100, 250)}
     NUM["nstep_theory"].update({f"P_calm_crisis_n{k}": float(Pn[k, 0, 1]) for k in (1, 5, 10, 20, 50, 100, 250)})
     NUM["nstep_sim_max_abs_error"] = float(max(np.abs(sim[1] - Pn[:, 1, 1]).max(), np.abs(sim[0] - Pn[:, 0, 1]).max()))
+    pd.DataFrame({"n_days_ahead": n,
+                  "theory_P_crisis_given_crisis_now": Pn[:, 1, 1], "simulated_P_crisis_given_crisis_now": sim[1],
+                  "theory_P_crisis_given_calm_now": Pn[:, 0, 1], "simulated_P_crisis_given_calm_now": sim[0],
+                  "stationary_crisis_share": pi[1]}).to_csv(SIM / "markov_chain" / "nstep_theory_vs_simulation.csv", index=False)
 
 
 def fig_sojourn(P, viterbi, rng):
     sim_states = simulate_chain(P, 2_000_000, 0, rng)
+    NUM["simulated_chain_crisis_share_2M_days"] = float(sim_states.mean())
+    soj_rows, obs_rows = [], []
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
     for ax, i, col, name in [(axes[0], 0, CALM, "Calm"), (axes[1], 1, CRISIS, "Crisis")]:
         p = P[i, i]
@@ -288,10 +212,16 @@ def fig_sojourn(P, viterbi, rng):
         ax.set_title(f"{'(a)' if i == 0 else '(b)'} {name} regime: sojourn-time distribution")
         ax.legend(frameon=False, fontsize=8.5, loc="lower left")
         ax.set_ylim(bottom=max(theory[theory > 0].min(), 1e-5 if i == 1 else 1e-4) / 2)
+        sim_counts = np.bincount(sim, minlength=400)[1:400]
+        soj_rows.append(pd.DataFrame({"regime": name.lower(), "stay_length_days": k, "theory_probability": theory,
+                                      "simulated_probability": sim_counts / len(sim)}))
+        obs_rows.append(pd.DataFrame({"regime": name.lower(), "observed_stay_length_days": obs}))
         NUM[f"sojourn_{name.lower()}"] = {"theory_mean": float(1 / (1 - p)), "simulated_mean": float(sim.mean()),
                                           "observed_viterbi_mean": float(obs.mean()), "observed_spells": int(len(obs)),
                                           "observed_viterbi_median": float(np.median(obs))}
     save(fig, "RF04_sojourn_times.png")
+    pd.concat(soj_rows).to_csv(SIM / "markov_chain" / "sojourn_theory_vs_simulation.csv", index=False)
+    pd.concat(obs_rows).to_csv(SIM / "markov_chain" / "observed_stays_viterbi.csv", index=False)
 
 
 def fig_regime_timeline(prices, returns, p_crisis, vix):
@@ -350,6 +280,19 @@ def fig_poisson(returns, rng):
     disp_h = np.array([dispersion(yearly(e)) for e in hawk_paths])
     n_h = np.array([len(e) for e in hawk_paths])
     obs_disp = dispersion(counts.to_numpy())
+    ph = SIM / "poisson_hawkes"
+    pd.DataFrame({"model": ["Poisson"] * N_SIM + ["Hawkes"] * N_SIM,
+                  "path": list(range(1, N_SIM + 1)) * 2,
+                  "n_events": [len(e) for e in pois_paths] + list(n_h),
+                  "dispersion_index_yearly": list(disp_p) + list(disp_h)}).to_csv(ph / "simulated_paths_summary.csv", index=False)
+    ev = [{"model": m, "path": i + 1, "event_calendar_day": float(t), "event_date": (t0 + pd.Timedelta(days=float(t))).date()}
+          for m, paths in [("Poisson", pois_paths), ("Hawkes", hawk_paths)] for i, e in enumerate(paths[:20]) for t in e]
+    pd.DataFrame(ev).to_csv(ph / "simulated_event_times_first20_paths.csv", index=False)
+    pd.DataFrame({"year": counts.index, "crash_days": counts.values,
+                  "poisson_pmf_at_count": stats.poisson.pmf(counts.values, counts.mean())}).to_csv(ph / "observed_yearly_counts.csv", index=False)
+    pd.DataFrame({"gap_trading_days": gaps, "exponential_survival_at_gap": np.exp(-lam * gaps)}).to_csv(
+        ph / "observed_interarrival_gaps.csv", index=False)
+    pd.DataFrame({"date": returns.index[crash], "log_return": returns[crash].values}).to_csv(ph / "observed_crash_days.csv", index=False)
 
     dates = t0 + pd.to_timedelta(grid, unit="D")
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.5), gridspec_kw={"wspace": 0.28})
@@ -459,6 +402,11 @@ def fig_sample_paths_and_theory(returns, prices, fit, garch, rng):
     axes[-1].set_xlabel("Trading day")
     axes[0].set_ylim(-15, 15)
     save(fig, "RF08_simulated_sample_paths.png")
+    rp = SIM / "return_paths"
+    pd.DataFrame({"trading_day": np.arange(1, n + 1), "date_of_actual": returns.index, "actual_nifty50": r,
+                  "gbm_simulated": sims["GBM"], "garch_simulated": sims["GARCH(1,1)"],
+                  "hmm_simulated": sims["HMM 2-state"], "hmm_simulated_hidden_state": hmm_s}).to_csv(
+        rp / "simulated_return_paths.csv", index=False)
 
     # (RF09) price fan: 500 paths each, GBM vs HMM, vs actual
     reps = 500
@@ -467,6 +415,11 @@ def fig_sample_paths_and_theory(returns, prices, fit, garch, rng):
     for i in range(reps):
         x, _ = simulate_hmm(P, mu, sd, pi, n, rng)
         hmm_paths[i] = np.exp(np.cumsum(x)) * prices.iloc[0]
+    qrows = {"date": returns.index, "actual_nifty50": prices.iloc[1:].to_numpy()}
+    for lab, paths in [("gbm", gbm_paths), ("hmm", hmm_paths)]:
+        for q, v in zip([5, 25, 50, 75, 95], np.percentile(paths, [5, 25, 50, 75, 95], axis=0)):
+            qrows[f"{lab}_p{q}"] = v
+    pd.DataFrame(qrows).to_csv(SIM / "return_paths" / "simulated_price_quantiles_500_paths.csv", index=False)
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.3), sharey=True)
     dd = returns.index
     for ax, paths, c, name in [(axes[0], gbm_paths, GREY, "GBM (random walk)"), (axes[1], hmm_paths, CALM, "2-state HMM")]:
@@ -514,6 +467,10 @@ def fig_sample_paths_and_theory(returns, prices, fit, garch, rng):
     stats_rows.append({"model": "HMM theory (formula)", "excess_kurtosis_mean": float(exk),
                        "acf_sq_lag1_mean": float(th_acf[0]), "acf_sq_lag20_mean": float(th_acf[19])})
     pd.DataFrame(stats_rows).to_csv(OUT / "simulation_stats.csv", index=False)
+    pd.DataFrame(stats_rows).to_csv(SIM / "return_paths" / "simulation_stats.csv", index=False)
+    pd.DataFrame({"lag_days": lags, "nifty50_empirical": emp_acf, "hmm_theory": th_acf,
+                  "hmm_simulated_mean_300": acf_sims["HMM 2-state"], "garch_simulated_mean_300": acf_sims["GARCH(1,1)"],
+                  "gbm_simulated_mean_300": acf_sims["GBM"]}).to_csv(SIM / "return_paths" / "acf_squared_returns.csv", index=False)
     NUM["simulation_stats"] = stats_rows
     NUM["hmm_theory"] = {"stationary": pi.tolist(), "second_eigenvalue": float(lam),
                          "acf_decay_half_life_days": float(np.log(0.5) / np.log(lam)),
@@ -586,10 +543,17 @@ def fig_parameter_recovery(returns, fit, rng):
     fig.tight_layout()
     save(fig, "RF11_parameter_recovery.png")
     pd.DataFrame(rows).to_csv(OUT / "parameter_recovery_own_em.csv", index=False)
+    pr = SIM / "parameter_recovery"
+    pd.DataFrame(rows).to_csv(pr / "parameter_recovery_own_em_summary.csv", index=False)
+    pd.DataFrame(est, columns=["calm_mean", "crisis_mean", "calm_vol", "crisis_vol", "p_calm_to_crisis",
+                               "p_crisis_to_calm"]).assign(replication=np.arange(1, reps + 1)).to_csv(
+        pr / "own_em_estimates_100_replications.csv", index=False)
     NUM["parameter_recovery_own_em"] = rows
 
     # (RF12) EM convergence + comparison with hmmlearn
     path = np.array(own.log_likelihood_path)
+    pd.DataFrame({"iteration": np.arange(1, len(path) + 1), "log_likelihood": path}).to_csv(
+        SIM / "parameter_recovery" / "em_loglikelihood_by_iteration.csv", index=False)
     from hmmlearn.hmm import GaussianHMM
     m = GaussianHMM(2, covariance_type="diag", n_iter=2000, tol=1e-10, random_state=42,
                     covars_prior=0.0, covars_weight=0.0, min_covar=1e-12)

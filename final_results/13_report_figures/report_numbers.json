@@ -67,6 +67,7 @@
     "P_calm_crisis_n250": 0.17038442600292267
   },
   "nstep_sim_max_abs_error": 0.011230221189204137,
+  "simulated_chain_crisis_share_2M_days": 0.171268,
   "sojourn_calm": {
     "theory_mean": 111.07185834709651,
     "simulated_mean": 111.31390194761585,

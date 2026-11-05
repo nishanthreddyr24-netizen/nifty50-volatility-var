@@ -49,4 +49,4 @@ tests/test_trading_applications.py::test_variance_swap_sign PASSED       [ 95%]
 tests/test_trading_applications.py::test_drawdowns PASSED                [ 97%]
 tests/test_trading_applications.py::test_bootstrap_detects_a_clear_sharpe_gain PASSED [100%]
 
-============================= 43 passed in 36.33s =============================
+======================== 43 passed in 74.24s (0:01:14) ========================

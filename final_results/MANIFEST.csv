@@ -184,6 +184,33 @@ file,size_kb,source,description
 13_report_figures/01_price_and_returns.png,350.2,reports/figures/01_price_and_returns.png,Report figure (copy): 01_price_and_returns.png
 13_report_figures/02_fat_tails.png,152.4,reports/figures/02_fat_tails.png,Report figure (copy): 02_fat_tails.png
 13_report_figures/04_vol_vs_vix.png,349.4,reports/figures/04_vol_vs_vix.png,Report figure (copy): 04_vol_vs_vix.png
+14_simulations/README.md,8.0,reports/simulations/README.md,"What each simulation answers, its data files, theory and results"
+14_simulations/markov_chain/nstep_theory_vs_simulation.csv,19.2,reports/simulations/markov_chain/nstep_theory_vs_simulation.csv,"P^n theory vs 10,000 simulated chains, n = 0-250"
+14_simulations/markov_chain/sojourn_theory_vs_simulation.csv,38.1,reports/simulations/markov_chain/sojourn_theory_vs_simulation.csv,"Stay-length probabilities: geometric theory vs 2,000,000-day simulated chain"
+14_simulations/markov_chain/observed_stays_viterbi.csv,0.4,reports/simulations/markov_chain/observed_stays_viterbi.csv,Observed calm and crisis stays on the NIFTY Viterbi path
+14_simulations/markov_chain/RF02_state_transition_diagram.png,165.7,reports/report_figures/RF02_state_transition_diagram.png,State-transition diagram
+14_simulations/markov_chain/RF03_transition_matrix_and_nstep.png,177.4,reports/report_figures/RF03_transition_matrix_and_nstep.png,Transition heatmap; n-step theory vs simulation
+14_simulations/markov_chain/RF04_sojourn_times.png,155.5,reports/report_figures/RF04_sojourn_times.png,Stay lengths: theory vs simulation vs observed
+14_simulations/poisson_hawkes/observed_crash_days.csv,2.5,reports/simulations/poisson_hawkes/observed_crash_days.csv,The 78 NIFTY crash days
+14_simulations/poisson_hawkes/observed_interarrival_gaps.csv,1.7,reports/simulations/poisson_hawkes/observed_interarrival_gaps.csv,Gaps between crash days and exponential survival
+14_simulations/poisson_hawkes/observed_yearly_counts.csv,0.6,reports/simulations/poisson_hawkes/observed_yearly_counts.csv,Crash days per year and Poisson probabilities
+14_simulations/poisson_hawkes/simulated_paths_summary.csv,66.3,reports/simulations/poisson_hawkes/simulated_paths_summary.csv,"1,000 Poisson and 1,000 Hawkes paths: event count and dispersion"
+14_simulations/poisson_hawkes/simulated_event_times_first20_paths.csv,121.9,reports/simulations/poisson_hawkes/simulated_event_times_first20_paths.csv,Event times of the first 20 simulated paths of each model
+14_simulations/poisson_hawkes/RF06_poisson_checks.png,286.8,reports/report_figures/RF06_poisson_checks.png,Poisson checks
+14_simulations/poisson_hawkes/RF07_poisson_vs_hawkes_simulation.png,202.1,reports/report_figures/RF07_poisson_vs_hawkes_simulation.png,Poisson vs Hawkes simulations
+14_simulations/return_paths/simulated_return_paths.csv,473.8,reports/simulations/return_paths/simulated_return_paths.csv,"Actual returns and one simulated path each of GBM, GARCH, HMM"
+14_simulations/return_paths/simulated_price_quantiles_500_paths.csv,943.7,reports/simulations/return_paths/simulated_price_quantiles_500_paths.csv,Quantiles of 500 GBM and 500 HMM price paths vs actual
+14_simulations/return_paths/simulation_stats.csv,1.0,reports/simulations/return_paths/simulation_stats.csv,"Kurtosis and ACF of squared returns: data, simulations, HMM theory"
+14_simulations/return_paths/acf_squared_returns.csv,10.7,reports/simulations/return_paths/acf_squared_returns.csv,"ACF of squared returns, lags 1-100: data, theory, simulations"
+14_simulations/return_paths/RF08_simulated_sample_paths.png,432.1,reports/report_figures/RF08_simulated_sample_paths.png,Simulated return paths
+14_simulations/return_paths/RF09_simulated_price_paths.png,510.3,reports/report_figures/RF09_simulated_price_paths.png,Simulated price paths
+14_simulations/return_paths/RF10_theory_vs_simulation_vs_data.png,276.3,reports/report_figures/RF10_theory_vs_simulation_vs_data.png,Theory vs simulation vs data
+14_simulations/parameter_recovery/own_em_estimates_100_replications.csv,12.9,reports/simulations/parameter_recovery/own_em_estimates_100_replications.csv,Our EM's estimates on 100 simulated samples
+14_simulations/parameter_recovery/parameter_recovery_own_em_summary.csv,1.0,reports/simulations/parameter_recovery/parameter_recovery_own_em_summary.csv,Bias summary per parameter
+14_simulations/parameter_recovery/em_loglikelihood_by_iteration.csv,1.0,reports/simulations/parameter_recovery/em_loglikelihood_by_iteration.csv,Our EM's log-likelihood by iteration
+14_simulations/parameter_recovery/simulation_study_output.txt,1.0,reports/single_market/simulation_study_output.txt,Earlier 50-replication study with hmmlearn defaults
+14_simulations/parameter_recovery/RF11_parameter_recovery.png,187.0,reports/report_figures/RF11_parameter_recovery.png,Parameter recovery histograms
+14_simulations/parameter_recovery/RF12_em_convergence.png,100.4,reports/report_figures/RF12_em_convergence.png,EM convergence vs hmmlearn
 12_run_logs/sp500_log.txt,1.0,reports/multi_market/sp500_log.txt,sp500: run log of the seven-market backtest
 12_run_logs/ftse100_log.txt,1.0,reports/multi_market/ftse100_log.txt,ftse100: run log of the seven-market backtest
 12_run_logs/dax_log.txt,1.0,reports/multi_market/dax_log.txt,dax: run log of the seven-market backtest

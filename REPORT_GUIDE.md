@@ -414,6 +414,9 @@ Code structure (put in the appendix): see the "Appendix - Code" section below.
 
 ## 9. Simulation Results
 
+All simulated data, with a README per simulation, is in
+[`final_results/14_simulations/`](final_results/14_simulations/) (code: `src/simulators.py`).
+
 ### 9.1 Markov chain: theory vs simulation (Figure RF03)
 
 | n (days ahead) | 1 | 5 | 10 | 20 | 50 | 100 | 250 |

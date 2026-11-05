@@ -20,6 +20,8 @@ REP = ROOT / "reports"
 MM = REP / "multi_market"
 FIG = MM / "figures"
 SM = REP / "single_market"
+SIMS = REP / "simulations"
+RFIG = REP / "report_figures"
 OUT = ROOT / "final_results"
 REPO = "nishanthreddyr24-netizen/nifty50-volatility-var"
 RAW_URL = f"https://raw.githubusercontent.com/{REPO}/master/final_results/"
@@ -142,6 +144,43 @@ PLAN: list[tuple[str, list[tuple[Path, str]]]] = [
             "fig12_vrp_trade.png", "fig13_vol_targeting.png"]],
         *[(REP / "figures" / f, "Report figure (copy): " + f) for f in [
             "01_price_and_returns.png", "02_fat_tails.png", "04_vol_vs_vix.png"]],
+    ]),
+    ("14_simulations", [
+        (REP / "simulations" / "README.md", "What each simulation answers, its data files, theory and results"),
+    ]),
+    ("14_simulations/markov_chain", [
+        (SIMS / "markov_chain" / "nstep_theory_vs_simulation.csv", "P^n theory vs 10,000 simulated chains, n = 0-250"),
+        (SIMS / "markov_chain" / "sojourn_theory_vs_simulation.csv", "Stay-length probabilities: geometric theory vs 2,000,000-day simulated chain"),
+        (SIMS / "markov_chain" / "observed_stays_viterbi.csv", "Observed calm and crisis stays on the NIFTY Viterbi path"),
+        (RFIG / "RF02_state_transition_diagram.png", "State-transition diagram"),
+        (RFIG / "RF03_transition_matrix_and_nstep.png", "Transition heatmap; n-step theory vs simulation"),
+        (RFIG / "RF04_sojourn_times.png", "Stay lengths: theory vs simulation vs observed"),
+    ]),
+    ("14_simulations/poisson_hawkes", [
+        (SIMS / "poisson_hawkes" / "observed_crash_days.csv", "The 78 NIFTY crash days"),
+        (SIMS / "poisson_hawkes" / "observed_interarrival_gaps.csv", "Gaps between crash days and exponential survival"),
+        (SIMS / "poisson_hawkes" / "observed_yearly_counts.csv", "Crash days per year and Poisson probabilities"),
+        (SIMS / "poisson_hawkes" / "simulated_paths_summary.csv", "1,000 Poisson and 1,000 Hawkes paths: event count and dispersion"),
+        (SIMS / "poisson_hawkes" / "simulated_event_times_first20_paths.csv", "Event times of the first 20 simulated paths of each model"),
+        (RFIG / "RF06_poisson_checks.png", "Poisson checks"),
+        (RFIG / "RF07_poisson_vs_hawkes_simulation.png", "Poisson vs Hawkes simulations"),
+    ]),
+    ("14_simulations/return_paths", [
+        (SIMS / "return_paths" / "simulated_return_paths.csv", "Actual returns and one simulated path each of GBM, GARCH, HMM"),
+        (SIMS / "return_paths" / "simulated_price_quantiles_500_paths.csv", "Quantiles of 500 GBM and 500 HMM price paths vs actual"),
+        (SIMS / "return_paths" / "simulation_stats.csv", "Kurtosis and ACF of squared returns: data, simulations, HMM theory"),
+        (SIMS / "return_paths" / "acf_squared_returns.csv", "ACF of squared returns, lags 1-100: data, theory, simulations"),
+        (RFIG / "RF08_simulated_sample_paths.png", "Simulated return paths"),
+        (RFIG / "RF09_simulated_price_paths.png", "Simulated price paths"),
+        (RFIG / "RF10_theory_vs_simulation_vs_data.png", "Theory vs simulation vs data"),
+    ]),
+    ("14_simulations/parameter_recovery", [
+        (SIMS / "parameter_recovery" / "own_em_estimates_100_replications.csv", "Our EM's estimates on 100 simulated samples"),
+        (SIMS / "parameter_recovery" / "parameter_recovery_own_em_summary.csv", "Bias summary per parameter"),
+        (SIMS / "parameter_recovery" / "em_loglikelihood_by_iteration.csv", "Our EM's log-likelihood by iteration"),
+        (SM / "simulation_study_output.txt", "Earlier 50-replication study with hmmlearn defaults"),
+        (RFIG / "RF11_parameter_recovery.png", "Parameter recovery histograms"),
+        (RFIG / "RF12_em_convergence.png", "EM convergence vs hmmlearn"),
     ]),
     ("12_run_logs", [
         *[(MM / f"{m}_log.txt", f"{m}: run log of the seven-market backtest") for m in MARKETS],
