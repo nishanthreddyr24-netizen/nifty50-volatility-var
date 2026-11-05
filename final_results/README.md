@@ -698,7 +698,7 @@ option quotes; one 0.5 vol-point cost is assumed; no Sharpe gain is statisticall
 
 ---
 
-## 11. Official NSE data experiments (teammate, commit f6441e4)
+## 11. Official NSE data experiments
 
 Source: `11_nse_data_experiments/` (`exp1/`, `exp2/`, `validation_exp1_exp2.json`, `audits/`).
 NIFTY 50 rebuilt from official NSE data back to 1990 (`data/processed/nifty50_nse_1990_2026.csv`)

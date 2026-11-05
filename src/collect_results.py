@@ -41,7 +41,7 @@ PLAN: list[tuple[str, list[tuple[Path, str]]]] = [
         (ROOT / "data" / "raw" / "sp500.csv", "S&P 500 (^GSPC) daily OHLCV, 2008-2026 (Yahoo Finance; single-market study)"),
         (ROOT / "data" / "raw" / "vix_1990.csv", "CBOE VIX (^VIX) daily, 1990-2026 (Yahoo Finance)"),
         (ROOT / "data" / "raw" / "india_vix.csv", "India VIX (^INDIAVIX) daily, 2008-2026 (Yahoo Finance)"),
-        (ROOT / "data" / "processed" / "nifty50_nse_1990_2026.csv", "NIFTY 50 from official NSE data, 1990-2026 (teammate's series, audited against Yahoo)"),
+        (ROOT / "data" / "processed" / "nifty50_nse_1990_2026.csv", "NIFTY 50 from official NSE data, 1990-2026 (audited against Yahoo)"),
     ]),
     ("01_stylized_facts", [
         (SM / "stylized_facts_output.txt", "NIFTY 50 summary stats, Jarque-Bera, Ljung-Box, VIX and leverage correlations"),

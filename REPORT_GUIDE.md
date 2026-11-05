@@ -195,8 +195,8 @@ distribution) directly against market data, and test the models out of sample on
 
 > We use daily closing prices of seven equity indices from Yahoo Finance (public): NIFTY 50
 > (2008-2026, our main series), Sensex, S&P 500, FTSE 100, DAX, Nikkei 225 and Hang Seng (from 1990),
-> plus the CBOE VIX and India VIX implied-volatility indices. A team member also rebuilt NIFTY 50
-> back to 1990 from official National Stock Exchange (NSE) files and audited it against Yahoo. We
+> plus the CBOE VIX and India VIX implied-volatility indices. We also rebuilt NIFTY 50 back to
+> 1990 from official National Stock Exchange (NSE) files and audited it against Yahoo. We
 > work with daily log returns r_t = ln(S_t / S_{t-1}).
 
 **Table 4.1 (data):**
@@ -790,14 +790,3 @@ python -m pytest tests -q       # all unit tests pass
 - **How is this different from a Poisson model of crashes?** Poisson is rejected by four separate
   tests; crash arrivals behave like a Poisson process whose rate is switched by the hidden Markov chain.
 
----
-
-## Individual contributions (team to confirm and edit)
-
-From the repository history:
-
-| Member (GitHub) | Contribution |
-|---|---|
-| nishanthreddyr24-netizen | Project setup and data loaders; stylized facts; GBM, GARCH and HMM models; rolling backtest and VaR tests; Poisson/Hawkes analysis; simulation study; seven-market study; crisis validation; Chapman-Kolmogorov check; trading tests; results folder |
-| PrajwalGundala | Official NSE NIFTY data back to 1990 and data audits; Experiment 1 and 2 (training-start sensitivity); statistical comparison; visualization pipeline; extended data loaders and tests |
-| thisisaadi123 | MS-GARCH and HMM-gated GARCH models with tests; inclusion in the model comparison |

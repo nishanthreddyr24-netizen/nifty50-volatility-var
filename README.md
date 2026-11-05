@@ -288,13 +288,7 @@ Run in this order (approximate run times on one laptop):
 
 ---
 
-## Team
-
-| Member (GitHub) | Main contribution |
-|---|---|
-| nishanthreddyr24-netizen | Data pipeline, stylized facts, GBM / GARCH / HMM, backtest harness, Poisson and Hawkes, simulations, seven-market study, crisis validation, Chapman-Kolmogorov, trading tests, results and report guide |
-| PrajwalGundala | Official NSE data to 1990 and audits; Experiments 1 and 2; statistical comparison; Exp 1/2 visualizations; extended loaders |
-| thisisaadi123 | MS-GARCH and HMM-gated GARCH models with tests |
+## Limitations
 
 Limitations and extensions are listed in [`final_results/README.md`](final_results/README.md#known-limitations)
 and [`REPORT_GUIDE.md`](REPORT_GUIDE.md#14-limitations).
