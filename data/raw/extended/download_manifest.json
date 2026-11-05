@@ -1,0 +1,80 @@
+{
+  "source": "Yahoo Finance via yfinance",
+  "requested_start": "1990-01-01",
+  "requested_end": null,
+  "download_timestamp_utc": "2026-11-01T13:37:00.901604+00:00",
+  "datasets": {
+    "nifty50": {
+      "ticker": "^NSEI",
+      "path": "data\\raw\\extended\\nifty50_1990_onward.csv",
+      "downloaded_successfully": true,
+      "first_date": "2007-09-17",
+      "last_date": "2026-10-30",
+      "row_count": 4691,
+      "columns": [
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume"
+      ],
+      "missing_values": {
+        "Open": 0,
+        "High": 0,
+        "Low": 0,
+        "Close": 0,
+        "Volume": 0
+      },
+      "duplicate_date_count": 0,
+      "dates_sorted": true
+    },
+    "sp500": {
+      "ticker": "^GSPC",
+      "path": "data\\raw\\extended\\sp500_1990_onward.csv",
+      "downloaded_successfully": true,
+      "first_date": "1990-01-02",
+      "last_date": "2026-10-30",
+      "row_count": 9276,
+      "columns": [
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume"
+      ],
+      "missing_values": {
+        "Open": 0,
+        "High": 0,
+        "Low": 0,
+        "Close": 0,
+        "Volume": 0
+      },
+      "duplicate_date_count": 0,
+      "dates_sorted": true
+    },
+    "india_vix": {
+      "ticker": "^INDIAVIX",
+      "path": "data\\raw\\extended\\india_vix_available_history.csv",
+      "downloaded_successfully": true,
+      "first_date": "2008-03-03",
+      "last_date": "2026-10-30",
+      "row_count": 4572,
+      "columns": [
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume"
+      ],
+      "missing_values": {
+        "Open": 0,
+        "High": 0,
+        "Low": 0,
+        "Close": 0,
+        "Volume": 0
+      },
+      "duplicate_date_count": 0,
+      "dates_sorted": true
+    }
+  }
+}
