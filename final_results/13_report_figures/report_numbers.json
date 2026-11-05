@@ -1,0 +1,328 @@
+{
+  "hmm_fit": {
+    "means": [
+      0.0005590083151159217,
+      -0.0010654041765652002
+    ],
+    "stds": [
+      0.008441229104176254,
+      0.025218002848895492
+    ],
+    "transmat": [
+      [
+        0.9909968194024896,
+        0.009003180597510319
+      ],
+      [
+        0.04383714831054825,
+        0.9561628516894517
+      ]
+    ],
+    "stationary": [
+      0.829615356611884,
+      0.17038464338811604
+    ],
+    "expected_stay_days": [
+      111.07185834709651,
+      22.811702826011047
+    ],
+    "annual_mean": [
+      0.14087009540921228,
+      -0.26848185249443046
+    ],
+    "annual_vol": [
+      0.13400035781622543,
+      0.400323384599375
+    ]
+  },
+  "garch_fit": {
+    "mu": 0.0005904927982218303,
+    "omega": 1.5189313898059292e-06,
+    "alpha": 0.0916478472064887,
+    "beta": 0.8992929015180121,
+    "persistence": 0.9909407487245008,
+    "half_life_days": 76.16553511859229,
+    "unconditional_vol_annual": 0.20555270489458102
+  },
+  "gbm_fit": {
+    "mu_daily_log": 0.0002823362085445212,
+    "sigma_daily": 0.012786963011579437,
+    "sigma_annual": 0.20298674491452434,
+    "mu_annual_gbm_drift": 0.09175053385871644
+  },
+  "nstep_theory": {
+    "P_crisis_crisis_n1": 0.9561628516894518,
+    "P_crisis_crisis_n5": 0.8027859705546134,
+    "P_crisis_crisis_n10": 0.6524531531071878,
+    "P_crisis_crisis_n20": 0.4505024669200218,
+    "P_crisis_crisis_n50": 0.22534337290030004,
+    "P_crisis_crisis_n100": 0.17402544141038126,
+    "P_crisis_crisis_n250": 0.17038570185260635,
+    "P_calm_crisis_n1": 0.009003180597510346,
+    "P_calm_crisis_n5": 0.04050339932883576,
+    "P_calm_crisis_n10": 0.07137843471260512,
+    "P_calm_crisis_n20": 0.11285463856267824,
+    "P_calm_crisis_n50": 0.1590973360180595,
+    "P_calm_crisis_n100": 0.1696369040077781,
+    "P_calm_crisis_n250": 0.17038442600292267
+  },
+  "nstep_sim_max_abs_error": 0.011230221189204137,
+  "sojourn_calm": {
+    "theory_mean": 111.07185834709651,
+    "simulated_mean": 111.31390194761585,
+    "observed_viterbi_mean": 184.1904761904762,
+    "observed_spells": 21,
+    "observed_viterbi_median": 135.0
+  },
+  "sojourn_crisis": {
+    "theory_mean": 22.811702826011047,
+    "simulated_mean": 23.005977567331588,
+    "observed_viterbi_mean": 37.25,
+    "observed_spells": 20,
+    "observed_viterbi_median": 14.5
+  },
+  "poisson": {
+    "crash_days": 78,
+    "trading_days": 4613,
+    "lambda_per_trading_day": 0.016908736180359853,
+    "theory_mean_gap": 59.14102564102564,
+    "observed_mean_gap": 57.84415584415584,
+    "observed_median_gap": 7.0,
+    "observed_gap_cv": 2.544216888738792,
+    "theory_gap_cv": 1.0,
+    "share_gaps_le_5_days": 0.44155844155844154,
+    "theory_share_gaps_le_5_days": 0.08106848525710719,
+    "ks_stat": 0.5197598041123428,
+    "ks_p": 7.121944350374453e-20,
+    "years": 19,
+    "yearly_mean": 4.105263157894737,
+    "yearly_variance": 72.43274853801171,
+    "dispersion_index": 17.643874643874646,
+    "years_with_zero_observed": 6,
+    "years_with_zero_poisson_expected": 0.3132279186824319,
+    "max_year_observed": 35,
+    "prob_one_year_ge_35_under_poisson": 5.274740200856381e-21
+  },
+  "hawkes": {
+    "mu_per_calendar_day": 0.00271234010433512,
+    "alpha": 0.028814321642588424,
+    "beta": 0.03785649734646278,
+    "branching_ratio": 0.7611460029933479,
+    "background_per_year": 0.9906822231084026,
+    "stationary_rate_per_year": 4.147647665618976,
+    "half_life_calendar_days": 18.30986037129268,
+    "expected_events_theory": 78.00189408661669,
+    "observed_events": 78,
+    "simulated_events_median": 70.5,
+    "simulated_events_95": [
+      27.0,
+      161.04999999999995
+    ],
+    "dispersion_poisson_sim_95": [
+      0.4567067067067067,
+      1.6980912221519426
+    ],
+    "dispersion_hawkes_sim_95": [
+      2.135612535612536,
+      29.581671354899207
+    ],
+    "share_poisson_sims_ge_observed": 0.0,
+    "share_hawkes_sims_ge_observed": 0.118
+  },
+  "simulation_stats": [
+    {
+      "model": "NIFTY 50 actual",
+      "excess_kurtosis_mean": 15.921426018302498,
+      "acf_sq_lag1_mean": 0.16109157936418644,
+      "acf_sq_lag20_mean": 0.08592704079004439
+    },
+    {
+      "model": "GBM",
+      "excess_kurtosis_mean": 0.0018049897906072512,
+      "excess_kurtosis_95_low": -0.12295102656475149,
+      "excess_kurtosis_95_high": 0.1487633265718022,
+      "acf_sq_lag1_mean": 0.00018897195149187316,
+      "acf_sq_lag1_95": [
+        -0.02416386286524385,
+        0.02743045172127443
+      ],
+      "acf_sq_lag20_mean": 0.0004395037254715238,
+      "acf_sq_lag20_95": [
+        -0.029591372828759968,
+        0.030052634285672068
+      ]
+    },
+    {
+      "model": "GARCH(1,1)",
+      "excess_kurtosis_mean": 3.0976645924233357,
+      "excess_kurtosis_95_low": 0.8631371861514507,
+      "excess_kurtosis_95_high": 10.057192329034192,
+      "acf_sq_lag1_mean": 0.24654231690685502,
+      "acf_sq_lag1_95": [
+        0.14125205161230917,
+        0.40854945238687873
+      ],
+      "acf_sq_lag20_mean": 0.18120559306422468,
+      "acf_sq_lag20_95": [
+        0.08854916672482434,
+        0.3087510638151341
+      ]
+    },
+    {
+      "model": "HMM 2-state",
+      "excess_kurtosis_mean": 4.813883363267165,
+      "excess_kurtosis_95_low": 3.729229839095403,
+      "excess_kurtosis_95_high": 6.1307379580179635,
+      "acf_sq_lag1_mean": 0.22501025915890718,
+      "acf_sq_lag1_95": [
+        0.17085605912781135,
+        0.2950855840071269
+      ],
+      "acf_sq_lag20_mean": 0.07686224110388623,
+      "acf_sq_lag20_95": [
+        0.034822445540627835,
+        0.13579967301474102
+      ]
+    },
+    {
+      "model": "HMM theory (formula)",
+      "excess_kurtosis_mean": 4.829679383063425,
+      "acf_sq_lag1_mean": 0.22299174946623473,
+      "acf_sq_lag20_mean": 0.07949312269817946
+    }
+  ],
+  "hmm_theory": {
+    "stationary": [
+      0.829615356611884,
+      0.17038464338811604
+    ],
+    "second_eigenvalue": 0.9471596710919413,
+    "acf_decay_half_life_days": 12.76805888215399,
+    "mixture_mean_daily": 0.00028223337200563274,
+    "mixture_vol_annual": 0.20566061250634599,
+    "mixture_skew": -0.17907320586495556,
+    "mixture_excess_kurtosis": 4.829679383063425,
+    "empirical_vol_annual": 0.2029647421238343,
+    "empirical_skew": -0.31673558913118544,
+    "acf_sq_theory": {
+      "lag1": 0.22299174946623473,
+      "lag5": 0.1794657535928338,
+      "lag10": 0.13680361609571717,
+      "lag20": 0.07949312269817946,
+      "lag50": 0.015596440716848861,
+      "lag100": 0.0010332023869600475
+    },
+    "acf_sq_empirical": {
+      "lag1": 0.16109157936418644,
+      "lag5": 0.19022145476450994,
+      "lag10": 0.18722915315244226,
+      "lag20": 0.08592704079004439,
+      "lag50": 0.0410577502918915,
+      "lag100": 0.059729778974455534
+    }
+  },
+  "parameter_recovery_own_em": [
+    {
+      "parameter": "Calm mean mu_0",
+      "true": 0.0005941612974562134,
+      "mean_estimate": 0.0005960267267651116,
+      "std": 0.00012843029737055682,
+      "bias": 1.8654293088982013e-06,
+      "bias_over_std": 0.014524838352713015,
+      "bias_t_stat": 0.14524838352713015,
+      "relative_bias_pct": 0.31396008405203707
+    },
+    {
+      "parameter": "Crisis mean mu_1",
+      "true": -0.0010898874342386532,
+      "mean_estimate": -0.0012083910483955608,
+      "std": 0.0009783762751107068,
+      "bias": -0.00011850361415690768,
+      "bias_over_std": -0.12112273894161893,
+      "bias_t_stat": -1.2112273894161893,
+      "relative_bias_pct": -10.873014077796853
+    },
+    {
+      "parameter": "Calm vol sigma_0",
+      "true": 0.008142737736910233,
+      "mean_estimate": 0.008144996122623864,
+      "std": 9.196748475575889e-05,
+      "bias": 2.2583857136309476e-06,
+      "bias_over_std": 0.02455634966671773,
+      "bias_t_stat": 0.2455634966671773,
+      "relative_bias_pct": 0.027734968097939666
+    },
+    {
+      "parameter": "Crisis vol sigma_1",
+      "true": 0.02426425823251283,
+      "mean_estimate": 0.02428943612641898,
+      "std": 0.0006119996710131281,
+      "bias": 2.5177893906151716e-05,
+      "bias_over_std": 0.04114037163528413,
+      "bias_t_stat": 0.41140371635284134,
+      "relative_bias_pct": 0.10376535587811485
+    },
+    {
+      "parameter": "P(calmtocrisis)",
+      "true": 0.010068149061421673,
+      "mean_estimate": 0.010253945900153447,
+      "std": 0.0018298007971924953,
+      "bias": 0.0001857968387317735,
+      "bias_over_std": 0.10153938014282526,
+      "bias_t_stat": 1.0153938014282526,
+      "relative_bias_pct": 1.8453922125934243
+    },
+    {
+      "parameter": "P(crisistocalm)",
+      "true": 0.044285394966125505,
+      "mean_estimate": 0.045017965730986625,
+      "std": 0.008789487979510421,
+      "bias": 0.0007325707648611207,
+      "bias_over_std": 0.08334623889000703,
+      "bias_t_stat": 0.8334623889000703,
+      "relative_bias_pct": 1.6542039772287769
+    }
+  ],
+  "own_em": {
+    "log_likelihood": 14526.714599829482,
+    "iterations": 46,
+    "means": [
+      0.0005941612974562134,
+      -0.0010898874342386532
+    ],
+    "stds": [
+      0.008142737736910233,
+      0.02426425823251283
+    ],
+    "transmat": [
+      [
+        0.9899318509385783,
+        0.010068149061421673
+      ],
+      [
+        0.044285394966125505,
+        0.9557146050338744
+      ]
+    ],
+    "hmmlearn_no_prior_log_likelihood": 14526.714599828556,
+    "hmmlearn_default_prior_log_likelihood": 14524.039435710767,
+    "hmmlearn_default_stds": [
+      0.008441229104176254,
+      0.025218002848895492
+    ],
+    "hmmlearn_default_means": [
+      0.0005590083151159217,
+      -0.0010654041765652002
+    ],
+    "hmmlearn_default_transmat": [
+      [
+        0.9909968194024896,
+        0.009003180597510319
+      ],
+      [
+        0.04383714831054825,
+        0.9561628516894517
+      ]
+    ]
+  }
+}

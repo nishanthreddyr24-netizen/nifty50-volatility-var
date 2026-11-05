@@ -256,7 +256,7 @@ def figures(trades: dict[str, pd.DataFrame], curves: dict) -> None:
         ax.set_ylabel("Cumulative P&L, vol points per $1 vega")
     axes[0].legend(loc="upper left", fontsize=8, frameon=False)
     fig.tight_layout()
-    fig.savefig(OUT_DIR / "figures" / "fig12_vrp_trade.png", dpi=150)
+    fig.savefig(OUT_DIR / "figures" / "fig12_vrp_trade.png", dpi=300)
     plt.close(fig)
 
     c = curves["sp500"]
@@ -272,7 +272,7 @@ def figures(trades: dict[str, pd.DataFrame], curves: dict) -> None:
     ax.legend(frameon=False)
     ax2.set_ylabel("Drawdown from peak (%)")
     fig.tight_layout()
-    fig.savefig(OUT_DIR / "figures" / "fig13_vol_targeting.png", dpi=150)
+    fig.savefig(OUT_DIR / "figures" / "fig13_vol_targeting.png", dpi=300)
     plt.close(fig)
 
 

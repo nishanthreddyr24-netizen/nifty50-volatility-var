@@ -7,7 +7,7 @@ import pandas as pd
 df = pd.read_csv("https://raw.githubusercontent.com/nishanthreddyr24-netizen/nifty50-volatility-var/master/final_results/05_seven_market_var_backtest/ALL_backtest.csv")
 ```
 
-88 CSV files. Rows exclude the header.
+90 CSV files. Rows exclude the header.
 
 ## 00_input_data
 
@@ -141,4 +141,11 @@ df = pd.read_csv("https://raw.githubusercontent.com/nishanthreddyr24-netizen/nif
 | [audits/nifty50_nse_yahoo_comparison.csv](https://github.com/nishanthreddyr24-netizen/nifty50-volatility-var/blob/master/final_results/11_nse_data_experiments/audits/nifty50_nse_yahoo_comparison.csv) | [raw](https://raw.githubusercontent.com/nishanthreddyr24-netizen/nifty50-volatility-var/master/final_results/11_nse_data_experiments/audits/nifty50_nse_yahoo_comparison.csv) | 4,691 | NSE vs Yahoo data audits, weekend-date audit, calendar preflight |
 | [audits/nifty50_weekend_date_audit.csv](https://github.com/nishanthreddyr24-netizen/nifty50-volatility-var/blob/master/final_results/11_nse_data_experiments/audits/nifty50_weekend_date_audit.csv) | [raw](https://raw.githubusercontent.com/nishanthreddyr24-netizen/nifty50-volatility-var/master/final_results/11_nse_data_experiments/audits/nifty50_weekend_date_audit.csv) | 46 | NSE vs Yahoo data audits, weekend-date audit, calendar preflight |
 | [audits/nifty50_weekend_date_evidence_supplement.csv](https://github.com/nishanthreddyr24-netizen/nifty50-volatility-var/blob/master/final_results/11_nse_data_experiments/audits/nifty50_weekend_date_evidence_supplement.csv) | [raw](https://raw.githubusercontent.com/nishanthreddyr24-netizen/nifty50-volatility-var/master/final_results/11_nse_data_experiments/audits/nifty50_weekend_date_evidence_supplement.csv) | 46 | NSE vs Yahoo data audits, weekend-date audit, calendar preflight |
+
+## 13_report_figures
+
+| File | Download | Rows | Description |
+|---|---|---|---|
+| [simulation_stats.csv](https://github.com/nishanthreddyr24-netizen/nifty50-volatility-var/blob/master/final_results/13_report_figures/simulation_stats.csv) | [raw](https://raw.githubusercontent.com/nishanthreddyr24-netizen/nifty50-volatility-var/master/final_results/13_report_figures/simulation_stats.csv) | 5 | Kurtosis and ACF of squared returns: data, GBM, GARCH, HMM simulations, HMM theory |
+| [parameter_recovery_own_em.csv](https://github.com/nishanthreddyr24-netizen/nifty50-volatility-var/blob/master/final_results/13_report_figures/parameter_recovery_own_em.csv) | [raw](https://raw.githubusercontent.com/nishanthreddyr24-netizen/nifty50-volatility-var/master/final_results/13_report_figures/parameter_recovery_own_em.csv) | 6 | Parameter recovery with our own EM: true value, mean, std, bias |
 

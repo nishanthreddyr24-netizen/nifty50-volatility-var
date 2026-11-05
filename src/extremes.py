@@ -147,10 +147,15 @@ if __name__ == "__main__":
     T = float((returns.index[-1] - t0).days)
 
     hawkes = fit_hawkes(event_days, T)
-    print(f"  mu (background rate) = {hawkes.mu:.5f} events/day  (~{hawkes.mu * 252:.1f}/year)")
+    # Event times are in CALENDAR days since the first observation, so rates are per calendar day.
+    print(f"  mu (background rate) = {hawkes.mu:.5f} events per calendar day  (~{hawkes.mu * 365.25:.2f}/year)")
     print(f"  alpha (excitation jump) = {hawkes.alpha:.5f}")
-    print(f"  beta (decay rate) = {hawkes.beta:.5f}  (half-life ~ {np.log(2)/hawkes.beta:.1f} days)")
+    half = np.log(2) / hawkes.beta
+    print(f"  beta (decay rate) = {hawkes.beta:.5f}  (half-life ~ {half:.1f} calendar days, ~{half * 252 / 365.25:.1f} trading days)")
     print(f"  branching ratio alpha/beta = {hawkes.branching_ratio:.3f}  (expected 'children' per event)")
+    expected = hawkes.mu * T / (1 - hawkes.branching_ratio)
+    print(f"  stationary rate mu/(1-n) = {hawkes.mu / (1 - hawkes.branching_ratio) * 365.25:.2f}/year; "
+          f"expected events over the sample = {expected:.1f} (observed {len(event_days)})")
     print(f"  log-likelihood = {hawkes.log_likelihood:.2f}")
 
     poisson_ll = poisson_log_likelihood(event_days, T)

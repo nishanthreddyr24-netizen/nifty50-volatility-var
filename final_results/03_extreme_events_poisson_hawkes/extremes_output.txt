@@ -35,10 +35,11 @@ Name: log_return, dtype: int64
   overdispersed_at_5pct: True
 
 === Hawkes process (self-exciting) fit ===
-  mu (background rate) = 0.00271 events/day  (~0.7/year)
+  mu (background rate) = 0.00271 events per calendar day  (~0.99/year)
   alpha (excitation jump) = 0.02881
-  beta (decay rate) = 0.03786  (half-life ~ 18.3 days)
+  beta (decay rate) = 0.03786  (half-life ~ 18.3 calendar days, ~12.6 trading days)
   branching ratio alpha/beta = 0.761  (expected 'children' per event)
+  stationary rate mu/(1-n) = 4.15/year; expected events over the sample = 78.0 (observed 78)
   log-likelihood = -347.14
 
   Poisson log-likelihood (for comparison) = -427.29

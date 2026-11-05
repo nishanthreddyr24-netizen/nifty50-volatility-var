@@ -10,6 +10,9 @@ those regimes (HMM-gated GARCH) gives the most robust 99% VaR across seven marke
 normal errors gets exactly 1% coverage over 30+ years. Used for trading, the forecasts cut
 crisis losses by 54-70%, but they do not significantly raise risk-adjusted returns.
 
+**Writing the report?** Start with [`REPORT_GUIDE.md`](../REPORT_GUIDE.md): it follows the course's
+report structure section by section, with draft text, derivations, numbers and the figure to use.
+
 Everything in this folder was copied from the scripts' own output files by
 `python -m src.collect_results`. Nothing here needs to be rerun. `MANIFEST.csv` lists every
 file with its size, original path and a one-line description.
@@ -66,8 +69,9 @@ Most-used files:
 | [`10_trading_applications/`](10_trading_applications/) | Options (selling volatility) and volatility targeting | `TRADE_*.csv` |
 | [`11_nse_data_experiments/`](11_nse_data_experiments/) | Official NSE NIFTY data back to 1990; data audits | `exp1/`, `exp2/`, `audits/` |
 | [`12_run_logs/`](12_run_logs/) | Console output and logs of every run, unit tests | `*_log.txt`, `pytest_output.txt` |
+| [`13_report_figures/`](13_report_figures/) | Every figure for the report and slides (300 dpi), theory-vs-simulation numbers | `RF01`-`RF13`, `report_numbers.json` |
 
-The [master scorecard](#master-scorecard) at the end lists all 45 studies with a pass/fail verdict.
+The [master scorecard](#master-scorecard) at the end lists all 50 studies with a pass/fail verdict.
 
 ---
 
@@ -183,9 +187,9 @@ Full-sample HMM on NIFTY (`hmm_regime_output.txt`, from `python -m src.hmm`):
 | Regimes (2-state) | Calm: +14.1% a year, 13.4% vol; crisis: -26.9% a year, 40.0% vol | Two clear regimes |
 | 2 vs 3 states, chosen by BIC (lower is better) | BIC -28,989 with 2 states (7 parameters) vs -28,953 with 3 (14 parameters); log-likelihood 14,524.0 vs 14,535.4 | **BIC prefers 2 states** |
 | 3-state transition matrix | P(0->1) = 0.635, P(1->0) = 0.996: states 0 and 1 swap almost every day; mean India VIX in both is 16.7 | 3rd state is not a real regime; **2 states kept** |
-| Crisis regime vs India VIX | Mean India VIX 34.0 in the crisis state vs 16.7 in the others | Pass |
-| Crisis regime covers 2008 GFC | 100% of days | Pass |
-| Crisis regime covers 2020 COVID | 68.5% of days | Partial |
+| Crisis regime vs India VIX (2-state) | Mean India VIX 34.9 in the crisis regime vs 16.9 in calm (Viterbi path; filtered 34.7 vs 17.1). India VIX is not used in the fit | Pass |
+| Crisis regime covers 2008 GFC (Sep 2008 - Mar 2009) | 100% of days on the Viterbi path (filtered, real-time: 97%) | Pass |
+| Crisis regime covers 2020 COVID (15 Feb - 30 Jun 2020) | 68.5% of days on the Viterbi path (filtered: 64%) | Partial |
 | Moment-matched normal VaR vs exact mixture quantile | 4 Oct 2022: 2.85% vs 3.99%; 17 Oct 2025: 2.12% vs 2.22% | The normal approximation used in the backtest understates VaR when the regime is uncertain |
 
 - The 2008 GFC cannot be backtested on NIFTY: Yahoo data starts in 2008, so it sits inside every
@@ -208,11 +212,20 @@ Crash days (log return <= -3%): **78 of 4,613 days (1.69%)**.
 | Test | Result | Verdict |
 |---|---|---|
 | Poisson equidispersion (yearly counts) | Mean 4.11, variance 72.43, dispersion index 17.64; D = 317.6 on 18 df, p = 0 | **Poisson rejected** |
-| Hawkes self-exciting process (exponential kernel) | Background rate mu = 0.00271/day (0.7 per year); jump alpha = 0.0288; decay beta = 0.0379 (half-life 18.3 days); branching ratio 0.761 | Strong clustering |
+| Hawkes self-exciting process (exponential kernel, time in calendar days) | Background rate mu = 0.00271 per calendar day (0.99 per year); jump alpha = 0.0288; decay beta = 0.0379 (half-life 18.3 calendar days, about 12.6 trading days); branching ratio 0.761; stationary rate mu/(1-n) = 4.15 per year | Strong clustering |
+| Hawkes expected number of crashes, mu T / (1 - n) | 78.0 vs 78 observed | Pass |
 | Hawkes vs Poisson, likelihood ratio | Log-likelihood -347.14 vs -427.29; LR = 160.3, p = 0 | **Hawkes preferred** |
 
 Interpretation: each crash triggers on average 0.76 further crashes, and the extra risk halves
-every 18 trading days.
+every 18 calendar days (about 13 trading days). (An earlier printout labelled the background rate
+0.7 per year by converting with 252 days; the fit uses calendar days, so the correct figure is
+0.99 per year.)
+
+Further Poisson checks and 1,000 Poisson vs 1,000 Hawkes simulations are in
+`13_report_figures/` (RF06, RF07) and `report_numbers.json`: inter-arrival times are not
+exponential (KS = 0.52, p = 7e-20; 44% of gaps are 5 trading days or less vs 8% under Poisson;
+median gap 7 days vs 41), 6 years had no crash vs 0.31 expected, and 0% of Poisson simulations vs
+11.8% of Hawkes simulations are as clustered as the data.
 
 ---
 
@@ -233,6 +246,12 @@ days are simulated from it and refitted by EM.
 - Verdict: **pass, with one caveat**. Three of four parameters are recovered within one
   across-simulation standard deviation. Calm-regime volatility is overestimated by 2.0%
   (1.6 standard deviations): a small, systematic bias that does not change any conclusion.
+- **Cause of the caveat, found with our own EM (`src/em_hmm.py`):** hmmlearn adds a default
+  variance prior (`covars_prior = 0.01`), which inflates the variance. Without it, hmmlearn and
+  our Baum-Welch reach the identical maximum likelihood (14,526.715 vs 14,524.039 with the prior;
+  calm volatility 0.814% vs 0.844% a day). A 100-sample recovery study with our EM shows **no
+  significant bias on any of the six parameters** (all |t| < 1.3; `13_report_figures/RF11`,
+  `parameter_recovery_own_em.csv`).
 
 ---
 
@@ -719,9 +738,9 @@ training-start dates on a common evaluation window. Every run's validation statu
 ## 12. Run logs and tests
 
 `12_run_logs/` holds the run log and console output of every market, the aggregation,
-crisis-length and transition studies, and `pytest_output.txt`: **40 of 40 unit tests pass**
+crisis-length and transition studies, and `pytest_output.txt`: **43 of 43 unit tests pass**
 (parameter recovery, backtest harness, MS-GARCH, HMM-gated GARCH, NSE experiment calendar and
-runner, extended data loaders, Chapman-Kolmogorov, trading-test building blocks).
+runner, extended data loaders, our own EM, Chapman-Kolmogorov, trading-test building blocks).
 
 ---
 
@@ -742,7 +761,7 @@ runner, extended data loaders, Chapman-Kolmogorov, trading-test building blocks)
 | 11 | Crash days are Poisson | Dispersion test | Index 17.6, p = 0 | Rejected (intended) |
 | 12 | Hawkes beats Poisson | Likelihood ratio | LR = 160, branching 0.76 | Pass |
 | 13 | HMM estimates unbiased | 50-sample parameter recovery | 3 of 4 within 1 std; calm vol +2% | Pass (caveat) |
-| 14 | Unit tests | pytest | 40 of 40 | Pass |
+| 14 | Unit tests | pytest | 43 of 43 | Pass |
 | 15 | Correct 1% coverage, 7 markets | Kupiec + Christoffersen | Best: HMM 2 of 7; none on 1990-start markets | Fail |
 | 16 | Fewest violations | Count per market | HMM-gated GARCH in 6 of 7 | Pass |
 | 17 | Gated beats HMM | Diebold-Mariano | Better in 6 of 7, significant in 3 | Partial |
@@ -774,8 +793,13 @@ runner, extended data loaders, Chapman-Kolmogorov, trading-test building blocks)
 | 43 | Volatility targeting with gated VaR, 7 markets | Budget, drawdown, Sharpe | Passes in 2 of 7; GFC loss cut 54-70% everywhere | Partial |
 | 44 | Leverage effect (NIFTY) | Corr(return, next-day vol change) | -0.014 | Not found |
 | 45 | NSE data: HMM 2-state, 2008 start | Kupiec + Christoffersen | 0.96%, p = 0.80 / 0.38 | Pass |
+| 46 | Crash inter-arrival times are exponential | KS test | KS = 0.52, p = 7e-20; 44% of gaps <= 5 days vs 8% | Rejected (intended) |
+| 47 | Fitted Hawkes reproduces the clustering | 1,000 simulations | 11.8% of Hawkes vs 0% of Poisson simulations reach dispersion 17.6 | Pass |
+| 48 | HMM theory matches simulation | P^n, stays, kurtosis, ACF | P^n within 0.011; kurtosis 4.83 vs 4.81 | Pass |
+| 49 | HMM reproduces the data's tails and volatility memory | Theory vs data | Kurtosis 4.8 vs 15.9; ACF of r^2 lag 20 0.079 vs 0.086, lag 100 0.001 vs 0.060 | Partial |
+| 50 | Own Baum-Welch EM | vs hmmlearn; 100-sample recovery | Same log-likelihood 14,526.715; no significant bias | Pass |
 
-**Totals (45 studies): 26 pass, 4 partial, 10 fail or not found, 5 rejected hypotheses where
+**Totals (50 studies): 29 pass, 5 partial, 10 fail or not found, 6 rejected hypotheses where
 rejection is the intended finding.**
 
 ---

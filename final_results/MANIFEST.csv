@@ -11,16 +11,16 @@ file,size_kb,source,description
 00_input_data/india_vix.csv,386.4,data/raw/india_vix.csv,"India VIX (^INDIAVIX) daily, 2008-2026 (Yahoo Finance)"
 00_input_data/nifty50_nse_1990_2026.csv,424.7,data/processed/nifty50_nse_1990_2026.csv,"NIFTY 50 from official NSE data, 1990-2026 (teammate's series, audited against Yahoo)"
 01_stylized_facts/stylized_facts_output.txt,0.9,reports/single_market/stylized_facts_output.txt,"NIFTY 50 summary stats, Jarque-Bera, Ljung-Box, VIX and leverage correlations"
-01_stylized_facts/01_price_and_returns.png,104.8,reports/figures/01_price_and_returns.png,NIFTY 50 price and daily log returns
-01_stylized_facts/02_fat_tails.png,52.9,reports/figures/02_fat_tails.png,"Return histogram vs normal, QQ plot"
-01_stylized_facts/03_acf_clustering.png,29.3,reports/figures/03_acf_clustering.png,ACF of returns vs squared returns
-01_stylized_facts/04_vol_vs_vix.png,111.9,reports/figures/04_vol_vs_vix.png,21-day realised vol vs India VIX
-01_stylized_facts/05_crisis_windows.png,82.6,reports/figures/05_crisis_windows.png,2008 GFC and 2020 COVID windows
+01_stylized_facts/01_price_and_returns.png,350.2,reports/figures/01_price_and_returns.png,NIFTY 50 price and daily log returns
+01_stylized_facts/02_fat_tails.png,152.4,reports/figures/02_fat_tails.png,"Return histogram vs normal, QQ plot"
+01_stylized_facts/03_acf_clustering.png,111.2,reports/figures/03_acf_clustering.png,ACF of returns vs squared returns
+01_stylized_facts/04_vol_vs_vix.png,349.4,reports/figures/04_vol_vs_vix.png,21-day realised vol vs India VIX
+01_stylized_facts/05_crisis_windows.png,249.3,reports/figures/05_crisis_windows.png,2008 GFC and 2020 COVID windows
 02_nifty_model_comparison/model_comparison_output.txt,2.1,reports/single_market/model_comparison_output.txt,"Six-model VaR backtest on NIFTY 50 (Kupiec, Christoffersen, Basel, COVID window, regimes)"
 02_nifty_model_comparison/hmm_regime_output.txt,1.8,reports/single_market/hmm_regime_output.txt,"Full-sample HMM: regimes, 2 vs 3 states (BIC), India VIX and crisis-window checks, mixture VaR"
 02_nifty_model_comparison/nifty50_backtest.csv,1.5,reports/multi_market/nifty50_backtest.csv,"NIFTY 50 backtest table per model (seven-market run, identical numbers)"
 02_nifty_model_comparison/nifty50_var_paths.csv,678.5,reports/multi_market/nifty50_var_paths.csv,"NIFTY 50 daily return, VaR and hit for every model"
-03_extreme_events_poisson_hawkes/extremes_output.txt,1.0,reports/single_market/extremes_output.txt,"Crash days per year, Poisson dispersion test, Hawkes fit and LR test"
+03_extreme_events_poisson_hawkes/extremes_output.txt,1.1,reports/single_market/extremes_output.txt,"Crash days per year, Poisson dispersion test, Hawkes fit and LR test"
 04_hmm_simulation_study/simulation_study_output.txt,1.0,reports/single_market/simulation_study_output.txt,HMM parameter recovery: 50 simulated samples refit by EM
 05_seven_market_var_backtest/ALL_backtest.csv,11.9,reports/multi_market/ALL_backtest.csv,"Every market x model: violations, Kupiec, Christoffersen, Basel zones, sub-periods"
 05_seven_market_var_backtest/sp500_backtest.csv,2.0,reports/multi_market/sp500_backtest.csv,sp500: backtest table per model
@@ -37,14 +37,14 @@ file,size_kb,source,description
 05_seven_market_var_backtest/hangseng_var_paths.csv,1410.0,reports/multi_market/hangseng_var_paths.csv,"hangseng: daily return, VaR and hit for every model"
 05_seven_market_var_backtest/sensex_var_paths.csv,1105.5,reports/multi_market/sensex_var_paths.csv,"sensex: daily return, VaR and hit for every model"
 05_seven_market_var_backtest/nifty50_var_paths.csv,678.5,reports/multi_market/nifty50_var_paths.csv,"nifty50: daily return, VaR and hit for every model"
-05_seven_market_var_backtest/fig01_violation_rate_by_market.png,67.8,reports/multi_market/figures/fig01_violation_rate_by_market.png,Violation rate by market and model
-05_seven_market_var_backtest/fig02_hmm_vs_gated_by_period.png,95.1,reports/multi_market/figures/fig02_hmm_vs_gated_by_period.png,HMM vs HMM-gated GARCH violations by period
-05_seven_market_var_backtest/fig03_sp500_gfc_var_paths.png,137.5,reports/multi_market/figures/fig03_sp500_gfc_var_paths.png,S&P 500 VaR paths through the GFC
-05_seven_market_var_backtest/fig04_basel_red_years.png,56.7,reports/multi_market/figures/fig04_basel_red_years.png,Basel red-zone years by model
+05_seven_market_var_backtest/fig01_violation_rate_by_market.png,149.9,reports/multi_market/figures/fig01_violation_rate_by_market.png,Violation rate by market and model
+05_seven_market_var_backtest/fig02_hmm_vs_gated_by_period.png,204.5,reports/multi_market/figures/fig02_hmm_vs_gated_by_period.png,HMM vs HMM-gated GARCH violations by period
+05_seven_market_var_backtest/fig03_sp500_gfc_var_paths.png,300.5,reports/multi_market/figures/fig03_sp500_gfc_var_paths.png,S&P 500 VaR paths through the GFC
+05_seven_market_var_backtest/fig04_basel_red_years.png,125.8,reports/multi_market/figures/fig04_basel_red_years.png,Basel red-zone years by model
 06_forecast_skill_and_runtime/ALL_forecast_skill.csv,4.0,reports/multi_market/ALL_forecast_skill.csv,"Tick loss, skill vs GBM, rank, Diebold-Mariano vs HMM"
 06_forecast_skill_and_runtime/ALL_timings.csv,3.8,reports/multi_market/ALL_timings.csv,"Run time and ms per forecast, every model and market"
-06_forecast_skill_and_runtime/fig05_forecast_skill.png,111.6,reports/multi_market/figures/fig05_forecast_skill.png,Forecast skill vs GBM
-06_forecast_skill_and_runtime/fig10_runtime.png,52.0,reports/multi_market/figures/fig10_runtime.png,Run time per model
+06_forecast_skill_and_runtime/fig05_forecast_skill.png,260.1,reports/multi_market/figures/fig05_forecast_skill.png,Forecast skill vs GBM
+06_forecast_skill_and_runtime/fig10_runtime.png,115.2,reports/multi_market/figures/fig10_runtime.png,Run time per model
 07_regimes_and_transitions/ALL_regimes.csv,2.8,reports/multi_market/ALL_regimes.csv,"Regime summary per market: crisis share, crash days in crisis, regime vols"
 07_regimes_and_transitions/ALL_crisis_windows.csv,4.7,reports/multi_market/ALL_crisis_windows.csv,Share of each documented crisis window flagged by HMM and MS-GARCH
 07_regimes_and_transitions/ALL_transition_matrices.csv,4.8,reports/multi_market/ALL_transition_matrices.csv,"Fitted and empirical transition matrices, expected stays, switches per year"
@@ -69,23 +69,23 @@ file,size_kb,source,description
 07_regimes_and_transitions/hangseng_regime_flags.csv,634.8,reports/multi_market/hangseng_regime_flags.csv,"hangseng: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
 07_regimes_and_transitions/sensex_regime_flags.csv,503.4,reports/multi_market/sensex_regime_flags.csv,"sensex: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
 07_regimes_and_transitions/nifty50_regime_flags.csv,323.6,reports/multi_market/nifty50_regime_flags.csv,"nifty50: daily crash flag, HMM P(crisis), HMM and MS-GARCH crisis flags"
-07_regimes_and_transitions/fig06_transition_matrices.png,169.4,reports/multi_market/figures/fig06_transition_matrices.png,"Transition matrices, all markets"
-07_regimes_and_transitions/fig07_regime_timeline.png,68.2,reports/multi_market/figures/fig07_regime_timeline.png,"Regime timeline, all markets"
-07_regimes_and_transitions/fig08_crisis_days_by_market.png,92.4,reports/multi_market/figures/fig08_crisis_days_by_market.png,Crisis share and crash days by market
+07_regimes_and_transitions/fig06_transition_matrices.png,388.2,reports/multi_market/figures/fig06_transition_matrices.png,"Transition matrices, all markets"
+07_regimes_and_transitions/fig07_regime_timeline.png,159.4,reports/multi_market/figures/fig07_regime_timeline.png,"Regime timeline, all markets"
+07_regimes_and_transitions/fig08_crisis_days_by_market.png,206.8,reports/multi_market/figures/fig08_crisis_days_by_market.png,Crisis share and crash days by market
 08_chapman_kolmogorov/CK_summary.csv,3.4,reports/multi_market/CK_summary.csv,Horizons passed out of 40 per market and model
 08_chapman_kolmogorov/CK_crash_days.csv,93.6,reports/multi_market/CK_crash_days.csv,"Crash days: empirical n-step probability, bootstrap band, each model's value, pass flag"
 08_chapman_kolmogorov/CK_regime_flags.csv,135.8,reports/multi_market/CK_regime_flags.csv,Regime flags: empirical n-step probability vs one-step matrix power and HMM matrix power
-08_chapman_kolmogorov/fig11_chapman_kolmogorov.png,346.7,reports/multi_market/figures/fig11_chapman_kolmogorov.png,"Chapman-Kolmogorov check on crash days, 7 markets"
+08_chapman_kolmogorov/fig11_chapman_kolmogorov.png,858.6,reports/multi_market/figures/fig11_chapman_kolmogorov.png,"Chapman-Kolmogorov check on crash days, 7 markets"
 09_crisis_timing_and_length/VALIDATION_bear_markets.csv,8.1,reports/multi_market/VALIDATION_bear_markets.csv,83 bear markets (20% rule) with HMM / MS-GARCH start lags
 09_crisis_timing_and_length/VALIDATION_overlap.csv,1.5,reports/multi_market/VALIDATION_overlap.csv,Day-level overlap of crisis flags with bear markets
 09_crisis_timing_and_length/VALIDATION_events.csv,1.5,reports/multi_market/VALIDATION_events.csv,Lags against dated events and NBER recession coverage
 09_crisis_timing_and_length/VALIDATION_crisis_duration.csv,47.3,reports/multi_market/VALIDATION_crisis_duration.csv,Crisis episode length vs bear-market length
-09_crisis_timing_and_length/fig09_crisis_duration.png,92.0,reports/multi_market/figures/fig09_crisis_duration.png,Crisis length vs bear-market length
+09_crisis_timing_and_length/fig09_crisis_duration.png,221.8,reports/multi_market/figures/fig09_crisis_duration.png,Crisis length vs bear-market length
 10_trading_applications/TRADE_vrp_summary.csv,6.5,reports/multi_market/TRADE_vrp_summary.csv,"Options trade (sell one-month variance at VIX): every strategy, Sharpe, drawdown, crisis P&L, pass flags"
 10_trading_applications/TRADE_vrp_trades.csv,287.9,reports/multi_market/TRADE_vrp_trades.csv,"Every monthly options trade: strike, realised vol, forecasts, P&L per strategy"
 10_trading_applications/TRADE_voltarget_summary.csv,17.0,reports/multi_market/TRADE_voltarget_summary.csv,"Volatility targeting: every market x model, Sharpe, drawdown, budget breaches, pass flags"
-10_trading_applications/fig12_vrp_trade.png,196.8,reports/multi_market/figures/fig12_vrp_trade.png,"Cumulative P&L of the options trade, S&P 500 and NIFTY 50"
-10_trading_applications/fig13_vol_targeting.png,219.1,reports/multi_market/figures/fig13_vol_targeting.png,S&P 500 volatility targeting: growth and drawdown
+10_trading_applications/fig12_vrp_trade.png,446.1,reports/multi_market/figures/fig12_vrp_trade.png,"Cumulative P&L of the options trade, S&P 500 and NIFTY 50"
+10_trading_applications/fig13_vol_targeting.png,520.2,reports/multi_market/figures/fig13_vol_targeting.png,S&P 500 volatility targeting: growth and drawdown
 11_nse_data_experiments/validation_exp1_exp2.json,6.3,results/validation_exp1_exp2.json,Validation status of every Exp 1 / Exp 2 run
 11_nse_data_experiments/exp1/summary_priority.json,7.0,results/exp1/summary_priority.json,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
 11_nse_data_experiments/exp1/BASELINE_CONFIGURED_2008/garch.csv,543.5,results/exp1/BASELINE_CONFIGURED_2008/garch.csv,"Exp 1: 2008 vs 1990 training start on NSE data (GBM, GARCH, historical simulation)"
@@ -154,6 +154,36 @@ file,size_kb,source,description
 11_nse_data_experiments/audits/nifty50_weekend_date_evidence_supplement.csv,12.8,reports/audits/nifty50_weekend_date_evidence_supplement.csv,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
 11_nse_data_experiments/audits/nifty50_weekend_date_evidence_supplement.json,31.9,reports/audits/nifty50_weekend_date_evidence_supplement.json,"NSE vs Yahoo data audits, weekend-date audit, calendar preflight"
 11_nse_data_experiments/reproducibility/loss_comparison_exp1_exp2.txt,8.1,reports/reproducibility/loss_comparison_exp1_exp2.txt,Loss comparison between Exp 1 and Exp 2
+13_report_figures/RF01_pipeline.png,178.7,reports/report_figures/RF01_pipeline.png,Report figure: the modelling pipeline mapped to the project
+13_report_figures/RF02_state_transition_diagram.png,165.7,reports/report_figures/RF02_state_transition_diagram.png,Report figure: 2-state Markov chain diagram (NIFTY 50)
+13_report_figures/RF03_transition_matrix_and_nstep.png,177.4,reports/report_figures/RF03_transition_matrix_and_nstep.png,"Report figure: transition heatmap; P^n theory vs 10,000 simulated chains"
+13_report_figures/RF04_sojourn_times.png,155.5,reports/report_figures/RF04_sojourn_times.png,"Report figure: stay lengths, geometric theory vs simulation vs observed"
+13_report_figures/RF05_regime_probability_nifty.png,392.1,reports/report_figures/RF05_regime_probability_nifty.png,"Report figure: NIFTY price, filtered P(crisis), India VIX"
+13_report_figures/RF06_poisson_checks.png,286.8,reports/report_figures/RF06_poisson_checks.png,"Report figure: Poisson checks (counting process, inter-arrival survival, yearly counts)"
+13_report_figures/RF07_poisson_vs_hawkes_simulation.png,202.1,reports/report_figures/RF07_poisson_vs_hawkes_simulation.png,"Report figure: 1,000 Poisson vs 1,000 Hawkes simulations; Hawkes intensity"
+13_report_figures/RF08_simulated_sample_paths.png,432.1,reports/report_figures/RF08_simulated_sample_paths.png,"Report figure: actual returns vs simulated GBM, GARCH, HMM paths"
+13_report_figures/RF09_simulated_price_paths.png,510.3,reports/report_figures/RF09_simulated_price_paths.png,"Report figure: 500 simulated price paths, GBM vs HMM, vs actual"
+13_report_figures/RF10_theory_vs_simulation_vs_data.png,276.3,reports/report_figures/RF10_theory_vs_simulation_vs_data.png,"Report figure: ACF of squared returns and density, theory vs simulation vs data"
+13_report_figures/RF11_parameter_recovery.png,187.0,reports/report_figures/RF11_parameter_recovery.png,"Report figure: parameter recovery with our own EM, 100 samples"
+13_report_figures/RF12_em_convergence.png,100.4,reports/report_figures/RF12_em_convergence.png,Report figure: our EM log-likelihood by iteration vs hmmlearn
+13_report_figures/RF13_nifty_covid_var.png,172.3,reports/report_figures/RF13_nifty_covid_var.png,"Report figure: NIFTY COVID crash, VaR forecasts and violations"
+13_report_figures/report_numbers.json,9.8,reports/report_figures/report_numbers.json,"Every theory, simulation and estimation number behind RF01-RF13"
+13_report_figures/simulation_stats.csv,1.0,reports/report_figures/simulation_stats.csv,"Kurtosis and ACF of squared returns: data, GBM, GARCH, HMM simulations, HMM theory"
+13_report_figures/parameter_recovery_own_em.csv,1.0,reports/report_figures/parameter_recovery_own_em.csv,"Parameter recovery with our own EM: true value, mean, std, bias"
+13_report_figures/fig01_violation_rate_by_market.png,149.9,reports/multi_market/figures/fig01_violation_rate_by_market.png,Report figure (copy): fig01_violation_rate_by_market.png
+13_report_figures/fig02_hmm_vs_gated_by_period.png,204.5,reports/multi_market/figures/fig02_hmm_vs_gated_by_period.png,Report figure (copy): fig02_hmm_vs_gated_by_period.png
+13_report_figures/fig03_sp500_gfc_var_paths.png,300.5,reports/multi_market/figures/fig03_sp500_gfc_var_paths.png,Report figure (copy): fig03_sp500_gfc_var_paths.png
+13_report_figures/fig04_basel_red_years.png,125.8,reports/multi_market/figures/fig04_basel_red_years.png,Report figure (copy): fig04_basel_red_years.png
+13_report_figures/fig05_forecast_skill.png,260.1,reports/multi_market/figures/fig05_forecast_skill.png,Report figure (copy): fig05_forecast_skill.png
+13_report_figures/fig06_transition_matrices.png,388.2,reports/multi_market/figures/fig06_transition_matrices.png,Report figure (copy): fig06_transition_matrices.png
+13_report_figures/fig07_regime_timeline.png,159.4,reports/multi_market/figures/fig07_regime_timeline.png,Report figure (copy): fig07_regime_timeline.png
+13_report_figures/fig09_crisis_duration.png,221.8,reports/multi_market/figures/fig09_crisis_duration.png,Report figure (copy): fig09_crisis_duration.png
+13_report_figures/fig11_chapman_kolmogorov.png,858.6,reports/multi_market/figures/fig11_chapman_kolmogorov.png,Report figure (copy): fig11_chapman_kolmogorov.png
+13_report_figures/fig12_vrp_trade.png,446.1,reports/multi_market/figures/fig12_vrp_trade.png,Report figure (copy): fig12_vrp_trade.png
+13_report_figures/fig13_vol_targeting.png,520.2,reports/multi_market/figures/fig13_vol_targeting.png,Report figure (copy): fig13_vol_targeting.png
+13_report_figures/01_price_and_returns.png,350.2,reports/figures/01_price_and_returns.png,Report figure (copy): 01_price_and_returns.png
+13_report_figures/02_fat_tails.png,152.4,reports/figures/02_fat_tails.png,Report figure (copy): 02_fat_tails.png
+13_report_figures/04_vol_vs_vix.png,349.4,reports/figures/04_vol_vs_vix.png,Report figure (copy): 04_vol_vs_vix.png
 12_run_logs/sp500_log.txt,1.0,reports/multi_market/sp500_log.txt,sp500: run log of the seven-market backtest
 12_run_logs/ftse100_log.txt,1.0,reports/multi_market/ftse100_log.txt,ftse100: run log of the seven-market backtest
 12_run_logs/dax_log.txt,1.0,reports/multi_market/dax_log.txt,dax: run log of the seven-market backtest
@@ -171,4 +201,4 @@ file,size_kb,source,description
 12_run_logs/AGGREGATE_stdout.txt,15.1,reports/multi_market/AGGREGATE_stdout.txt,Console output of the cross-market aggregation
 12_run_logs/DURATION_stdout.txt,11.9,reports/multi_market/DURATION_stdout.txt,Console output of the crisis-length study
 12_run_logs/TRANSITIONS_stdout.txt,5.6,reports/multi_market/TRANSITIONS_stdout.txt,Console output of the transition-matrix study
-12_run_logs/pytest_output.txt,3.8,reports/single_market/pytest_output.txt,Unit test run
+12_run_logs/pytest_output.txt,4.0,reports/single_market/pytest_output.txt,Unit test run

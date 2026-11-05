@@ -66,7 +66,7 @@ plt.rcParams.update({
 
 def _save(fig, name):
     FIG_DIR.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIG_DIR / name, dpi=150, bbox_inches="tight")
+    fig.savefig(FIG_DIR / name, dpi=300, bbox_inches="tight")
     plt.close(fig)
     print("wrote", name)
 

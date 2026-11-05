@@ -8,6 +8,9 @@ backtests (Kupiec, Christoffersen, Basel traffic light).
 > **All results are in [`final_results/`](final_results/)**: every number and figure from every
 > study, ordered 01-12, with a detailed [README](final_results/README.md) and a master
 > pass/fail scorecard. Nothing needs to be rerun to read them.
+>
+> **Writing the report or slides?** See [`REPORT_GUIDE.md`](REPORT_GUIDE.md): the course's report
+> structure, section by section, with draft text, derivations, numbers and the 300-dpi figure to use.
 
 ## Setup
 
@@ -46,6 +49,8 @@ newer Python versions.)
   the HMM regime flags, with block-bootstrap bands
 - `src/trading_applications.py` — trading test: selling one-month variance at VIX / India VIX,
   and volatility targeting, using the out-of-sample forecasts
+- `src/em_hmm.py` — our own Baum-Welch (EM) estimator for the Gaussian HMM, checked against hmmlearn
+- `src/report_figures.py` — report figures RF01-RF13 and theory-vs-simulation numbers
 - `src/collect_results.py` — copies every result into `final_results/`
 - `src/make_multi_market_figures.py` — figures in `reports/multi_market/figures/`
 - `reports/multi_market/` — seven-market results (CSVs, logs, figures, `FINDINGS.md`)

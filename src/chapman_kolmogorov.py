@@ -196,7 +196,7 @@ def make_figure(a: pd.DataFrame, path: Path) -> None:
     fig.supylabel("P(crash at t+n | crash at t)")
     fig.suptitle("Chapman-Kolmogorov check on crash days (log return <= -3%)")
     fig.tight_layout()
-    fig.savefig(path, dpi=150)
+    fig.savefig(path, dpi=300)
     plt.close(fig)
 
 

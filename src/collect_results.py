@@ -116,6 +116,33 @@ PLAN: list[tuple[str, list[tuple[Path, str]]]] = [
         (REP / "audits", "NSE vs Yahoo data audits, weekend-date audit, calendar preflight"),
         (REP / "reproducibility", "Loss comparison between Exp 1 and Exp 2"),
     ]),
+    ("13_report_figures", [
+        *[(REP / "report_figures" / f, d) for f, d in [
+            ("RF01_pipeline.png", "Report figure: the modelling pipeline mapped to the project"),
+            ("RF02_state_transition_diagram.png", "Report figure: 2-state Markov chain diagram (NIFTY 50)"),
+            ("RF03_transition_matrix_and_nstep.png", "Report figure: transition heatmap; P^n theory vs 10,000 simulated chains"),
+            ("RF04_sojourn_times.png", "Report figure: stay lengths, geometric theory vs simulation vs observed"),
+            ("RF05_regime_probability_nifty.png", "Report figure: NIFTY price, filtered P(crisis), India VIX"),
+            ("RF06_poisson_checks.png", "Report figure: Poisson checks (counting process, inter-arrival survival, yearly counts)"),
+            ("RF07_poisson_vs_hawkes_simulation.png", "Report figure: 1,000 Poisson vs 1,000 Hawkes simulations; Hawkes intensity"),
+            ("RF08_simulated_sample_paths.png", "Report figure: actual returns vs simulated GBM, GARCH, HMM paths"),
+            ("RF09_simulated_price_paths.png", "Report figure: 500 simulated price paths, GBM vs HMM, vs actual"),
+            ("RF10_theory_vs_simulation_vs_data.png", "Report figure: ACF of squared returns and density, theory vs simulation vs data"),
+            ("RF11_parameter_recovery.png", "Report figure: parameter recovery with our own EM, 100 samples"),
+            ("RF12_em_convergence.png", "Report figure: our EM log-likelihood by iteration vs hmmlearn"),
+            ("RF13_nifty_covid_var.png", "Report figure: NIFTY COVID crash, VaR forecasts and violations"),
+            ("report_numbers.json", "Every theory, simulation and estimation number behind RF01-RF13"),
+            ("simulation_stats.csv", "Kurtosis and ACF of squared returns: data, GBM, GARCH, HMM simulations, HMM theory"),
+            ("parameter_recovery_own_em.csv", "Parameter recovery with our own EM: true value, mean, std, bias"),
+        ]],
+        *[(FIG / f, "Report figure (copy): " + f) for f in [
+            "fig01_violation_rate_by_market.png", "fig02_hmm_vs_gated_by_period.png", "fig03_sp500_gfc_var_paths.png",
+            "fig04_basel_red_years.png", "fig05_forecast_skill.png", "fig06_transition_matrices.png",
+            "fig07_regime_timeline.png", "fig09_crisis_duration.png", "fig11_chapman_kolmogorov.png",
+            "fig12_vrp_trade.png", "fig13_vol_targeting.png"]],
+        *[(REP / "figures" / f, "Report figure (copy): " + f) for f in [
+            "01_price_and_returns.png", "02_fat_tails.png", "04_vol_vs_vix.png"]],
+    ]),
     ("12_run_logs", [
         *[(MM / f"{m}_log.txt", f"{m}: run log of the seven-market backtest") for m in MARKETS],
         *[(MM / f"{m}_stdout.txt", f"{m}: console output of the seven-market backtest") for m in MARKETS],
